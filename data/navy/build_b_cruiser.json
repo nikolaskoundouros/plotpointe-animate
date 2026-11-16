@@ -1,0 +1,58 @@
+{
+ "tag": "b_cruiser",
+ "name": "SCENE_cruiser",
+ "render": [
+  "CYCLES",
+  508,
+  826,
+  200,
+  160,
+  6,
+  "Standard",
+  1,
+  240
+ ],
+ "env": [
+  "SKY",
+  "SHIP_cruiser",
+  "SEA"
+ ],
+ "camera_start": {
+  "name": "SHOT_camera",
+  "lens": 19.613,
+  "shift": [
+   -0.0,
+   -0.18401937186717987
+  ]
+ },
+ "lights": [
+  "SEA_sun"
+ ],
+ "zoom_target": [
+  -1.23,
+  54.48,
+  10.17
+ ],
+ "zoom": {
+  "lens": [
+   19.61,
+   26.48
+  ],
+  "frames": [
+   1,
+   240
+  ],
+  "target_px_first": [
+   243.8,
+   429.5
+  ],
+  "target_px_last": [
+   243.8,
+   429.5
+  ]
+ },
+ "saved": "/Users/nick/Desktop/aow-modules/navy_preview/work/scenes/SCENE_cruiser.blend",
+ "libraries": [
+  "//../library/cruiser.blend"
+ ]
+}

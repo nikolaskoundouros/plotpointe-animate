@@ -1,0 +1,73 @@
+{
+ "tag": "b_officer",
+ "name": "SCENE_officer",
+ "render": [
+  "CYCLES",
+  756,
+  1196,
+  100,
+  48,
+  0,
+  "Standard",
+  1,
+  240
+ ],
+ "env": [],
+ "camera_start": {
+  "name": "SHOT_camera_front",
+  "lens": 85.0,
+  "shift": [
+   0.19940465688705444,
+   0.022590797394514084
+  ]
+ },
+ "lights": [
+  "off_key",
+  "off_fill"
+ ],
+ "officer": {
+  "objects": 25,
+  "rig": "HG_Elwood",
+  "height": 1.959,
+  "override": true,
+  "bounds": [
+   [
+    -0.256,
+    -0.197,
+    -0.021
+   ],
+   [
+    0.257,
+    0.307,
+    1.938
+   ]
+  ]
+ },
+ "zoom_target": [
+  0.0,
+  0.06,
+  1.64
+ ],
+ "zoom": {
+  "lens": [
+   85.0,
+   187.0
+  ],
+  "frames": [
+   1,
+   240
+  ],
+  "target_px_first": [
+   139.6,
+   292.1
+  ],
+  "target_px_last": [
+   378.0,
+   520.0
+  ]
+ },
+ "saved": "/Users/nick/Desktop/aow-modules/navy_preview/work/scenes/SCENE_officer.blend",
+ "libraries": [
+  "//../library/officer.blend"
+ ]
+}

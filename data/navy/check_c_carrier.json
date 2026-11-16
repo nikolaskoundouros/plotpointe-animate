@@ -1,0 +1,27 @@
+{
+ "opened_from": "/tmp/preview_elsewhere/scenes/SCENE_carrier_battleship.blend",
+ "libraries": {
+  "//../library/carrier_battleship.blend": true
+ },
+ "missing_images": [],
+ "collections": {
+  "ENV_carrier": 30,
+  "LIGHTS": 1,
+  "CAMERA": 1
+ },
+ "officer_override": false,
+ "rig": null,
+ "rig_is_override": false,
+ "camera": "SHOT_camera",
+ "camera_keys": [
+  "keyed (layered action)"
+ ],
+ "frames": [
+  1,
+  240
+ ],
+ "lens_by_frame": {
+  "1": 29.51,
+  "240": 36.89
+ }
+}

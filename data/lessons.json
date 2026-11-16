@@ -1,0 +1,44 @@
+{
+ "source": "https://chatgpt.com/share/6af72603-4458-83eb-a6e6-9b6811643870",
+ "read": "2026-11-13",
+ "note": "The 6 lessons from the shared ChatGPT chat (Nick, 13 Nov 2026: \"you should only take the lessons from this chat.\") plus the full rules Nick pasted the same day. Every text is copied word for word from its source file.",
+ "lessons": [
+  {
+   "text": "never change my edits.",
+   "who": "Nick",
+   "where": "ChatGPT chat, message 24, after ChatGPT changed his last sentence"
+  },
+  {
+   "text": "I’ll keep your wording and offer any suggested changes separately.",
+   "who": "ChatGPT, Nick answered \"yes\"",
+   "where": "ChatGPT chat, message 23"
+  },
+  {
+   "text": "Any suggestions will be separate, and I’ll only apply them if you ask.",
+   "who": "ChatGPT",
+   "where": "ChatGPT chat, message 25"
+  },
+  {
+   "text": "Keep one clear causal chain: smoke blocks the pilot’s vision → plane dives → airman removes the burning bomb → smoke clears → pilot can recover the plane.",
+   "who": "ChatGPT, from Nick's edits",
+   "where": "the Feedback & Lessons tab of He Carried the Burning Bomb, written in that chat (message 21)"
+  },
+  {
+   "text": "Do not add a second emotional ending after resolving the main danger. This is a preference demonstrated in this revision, not a universal ban on survival endings.",
+   "who": "ChatGPT, from Nick's edits",
+   "where": "the Feedback & Lessons tab of He Carried the Burning Bomb, written in that chat (message 21)"
+  },
+  {
+   "text": "Spatial clarity matters: establish a destination and its purpose before introducing obstacles. If an obstacle needs more explanation than it contributes, omit it.",
+   "who": "ChatGPT, from Nick's edits",
+   "where": "the Feedback & Lessons tab of He Carried the Burning Bomb, written in that chat (message 21)"
+  }
+ ],
+ "rules": {
+  "text": "The central principle behind everything is:\nThe viewer must understand what is happening, care about it, and need the next sentence.\n1. Storytelling principles\n\n* Every script must tell a story, not simply communicate information.\n* The viewer must always understand what is happening.\n* The viewer must care about the people involved and what is at stake.\n* Every sentence must make the viewer want to hear the next one.\n* Keep the story focused on one central event.\n* Every sentence must advance the action, increase tension, explain something necessary, or make the consequences matter.\n* Never include information simply because it is interesting.\n* Cut anything that interrupts the story.\n* Add detail only when leaving it out would make an action confusing or emotionally empty.\n* Build anticipation honestly. Never promise something the story doesn't deliver.\n\n2. Story structure\n\n* Open with the most dramatic part of the story.\n* The hook should immediately create curiosity.\n* After the hook, go back and explain how the situation developed.\n* Start the background at a lower intensity than the hook.\n* Build tension chronologically.\n* Each development should increase the danger or make the situation more difficult.\n* Lead toward one clear payoff.\n* The ending must deliver on the promise made by the hook.\n* Don't introduce a new subject while the existing story is building tension.\n* Never change the subject during a tense sequence.\n\n3. Tension and pacing\n\n* Keep the story moving forward.\n* Don't waste sentences on unnecessary setup.\n* Remove preparation details that don't contribute to understanding the danger.\n* Preserve the sequence of events that makes the danger understandable.\n* Make each sentence create a reason to keep watching.\n* Don't release tension too early.\n* Don't explain the outcome before the viewer needs to know it.\n* Save the answer, consequence, or resolution for the end.\n* Shorter scripts are acceptable if they preserve the tension and make the story understandable.\n\n4. Clarity and language\n\n* Write in language a 9-10-year-old can understand.\n* Use simple, direct words.\n* Make it immediately clear who is doing what.\n* Make it clear what each person wants, what is stopping them, and why their decisions make sense.\n* Avoid ambiguous pronouns, especially when multiple people are involved.\n* Don't make the viewer work to understand the sequence of events.\n* Avoid unnecessary names, dates, ranks, locations, and technical details.\n* Introduce another character only when they are important to the story.\n* Never sacrifice clarity for sophisticated vocabulary.\n\n5. Sentence construction\n\n* Use natural, connected sentences.\n* Each sentence should flow logically into the next.\n* Avoid choppy storytelling.\n* Avoid unnecessary pauses or interruptions.\n* Don't repeat information the viewer already understands.\n* Don't explain something twice.\n* Don't interrupt the action with unrelated historical background.\n* Keep descriptions grounded in what is actually happening.\n* Make the action easy to visualize.\n\n6. Hooks and endings\n\n* The hook should contain the most dramatic or unusual part of the story.\n* Start with an action, danger, impossible situation, or extraordinary decision.\n* Create an immediate question in the viewer's mind.\n* The hook must be supported by the actual story.\n* Foreshadow what makes the situation extraordinary without revealing everything.\n* The body should progressively explain how the opening situation happened.\n* The ending should provide the payoff.\n* The payoff should feel earned, surprising, powerful, or satisfying.\n* Don't finish with a generic moral or unnecessary explanation.\n\n7. Content restrictions\n\n* War stories only.\n* Real historical events and real human actions.\n* No mythology.\n* No standalone weapon explainers.\n* No generic military history lessons.\n* The focus must be on an actual story involving people, decisions, danger, conflict, or consequences.\n* Weapons and military technology can appear when they are necessary to understand the story.\n\n8. Length and formatting\n\n* Target length: 100-150 words.\n* Don't add words just to reach the target.\n* A shorter script is acceptable when the story works. We explicitly approved a 93-word torpedo script because it maintained tension.\n* Keep the writing suitable for short-form video narration.\n* No unnecessary headings inside the script.\n* No em dashes.\n* No unnecessary stage directions or production notes in the narration.\n\n9. Editing rules\nThese are particularly important for how we work together:\n\n* Preserve edits that I have made.\n* Never change my edits without being asked.\n* Don't rewrite an entire script when I ask you to fix one sentence.\n* Don't change the ending simply because you think another ending sounds better.\n* Don't introduce new details unless they improve the story.\n* When reviewing a script, identify what is wrong before proposing changes.\n* Don't optimize for elegance at the expense of storytelling.\n* The objective is not to make the writing sound sophisticated. It is to make the viewer understand, care, and keep watching.\n\n10. The final quality test\nBefore accepting any script, check:\n\n* Is the story immediately understandable?\n* Does the opening create curiosity?\n* Is there one clear central story?\n* Does every sentence contribute?\n* Is the chronology easy to follow?\n* Does the tension increase?\n* Are all actions and decisions understandable?\n* Are there unnecessary details, names, or characters?\n* Are pronouns unambiguous?\n* Is the language simple enough for a 9-10-year-old?\n* Does the story maintain tension without unnecessary setup?\n* Does the ending deliver a proper payoff?\n* Does the script make the viewer want the next sentence?\n\nThe most important distinction: We are not trying to tell the viewer everything that happened. We are telling them just enough to understand the story, care about what happens, and desperately want to know what happens next.",
+  "who": "ChatGPT's reconstruction, pasted by Nick",
+  "where": "pasted into the Claude chat by Nick on 13 Nov 2026; it says itself it is rebuilt from earlier discussions and may not hold every rule of the shared chat",
+  "file": "data/import/rules_pasted.txt",
+  "changed": "the two en dashes (100-150, 9-10) are written with a hyphen; nothing else"
+ }
+}

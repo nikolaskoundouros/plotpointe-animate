@@ -1,0 +1,6 @@
+{"name": "SCENE_dock", "short": "dock", "title": "dock storyboard, officer on the quay, slow zoom on him",
+ "set_lib": "dock.blend", "camera": "SHOT_camera",
+ "ground_camera": {"frame": [510, 764], "focal_px": 588.19, "horizon_y": 448.71, "camera_height": 2.715},
+ "officer": {"feet_px": [320, 690], "turn_deg": 25},
+ "zoom": {"target": "officer", "at_height": 0.72, "factor": 2.0, "end_px": [280, 380]},
+ "notes": ["Not in the storyboard: the officer. His spot and turn are a first guess."], "check_samples": 48}

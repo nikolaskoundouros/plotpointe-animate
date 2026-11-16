@@ -1,0 +1,88 @@
+{
+ "tag": "b_dock",
+ "name": "SCENE_dock",
+ "render": [
+  "CYCLES",
+  510,
+  764,
+  200,
+  96,
+  0,
+  "Standard",
+  1,
+  240
+ ],
+ "env": [
+  "SET_ship",
+  "SET_crane_1",
+  "SET_crane_0",
+  "SET_building",
+  "SET",
+  "SEA"
+ ],
+ "camera_start": {
+  "name": "SHOT_camera",
+  "lens": 27.716,
+  "shift": [
+   0.0,
+   0.08731675148010254
+  ]
+ },
+ "lights": [
+  "DK_sun"
+ ],
+ "officer": {
+  "objects": 25,
+  "rig": "HG_Elwood",
+  "height": 1.959,
+  "override": true,
+  "placed": {
+   "spot": [
+    0.731,
+    6.618,
+    0.0
+   ],
+   "yaw_deg": 18.7
+  },
+  "bounds": [
+   [
+    0.431,
+    6.299,
+    0.0
+   ],
+   [
+    1.049,
+    6.907,
+    1.959
+   ]
+  ]
+ },
+ "zoom_target": [
+  0.74,
+  6.6,
+  1.41
+ ],
+ "zoom": {
+  "lens": [
+   27.72,
+   55.43
+  ],
+  "frames": [
+   1,
+   240
+  ],
+  "target_px_first": [
+   320.9,
+   564.9
+  ],
+  "target_px_last": [
+   280.0,
+   380.0
+  ]
+ },
+ "saved": "/Users/nick/Desktop/aow-modules/navy_preview/work/scenes/SCENE_dock.blend",
+ "libraries": [
+  "//../library/dock.blend",
+  "//../library/officer.blend"
+ ]
+}

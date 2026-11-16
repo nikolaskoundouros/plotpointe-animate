@@ -1,0 +1,129 @@
+Art of War: Complete Script Rules
+I've recovered the core rules we established for your Art of War scripts, including the writing principles and constraints we finalized in our November discussions.
+The central principle behind everything is:
+The viewer must understand what is happening, care about it, and need the next sentence.
+1. Storytelling principles
+
+* Every script must tell a story, not simply communicate information.
+* The viewer must always understand what is happening.
+* The viewer must care about the people involved and what is at stake.
+* Every sentence must make the viewer want to hear the next one.
+* Keep the story focused on one central event.
+* Every sentence must advance the action, increase tension, explain something necessary, or make the consequences matter.
+* Never include information simply because it is interesting.
+* Cut anything that interrupts the story.
+* Add detail only when leaving it out would make an action confusing or emotionally empty.
+* Build anticipation honestly. Never promise something the story doesn't deliver.
+
+2. Story structure
+
+* Open with the most dramatic part of the story.
+* The hook should immediately create curiosity.
+* After the hook, go back and explain how the situation developed.
+* Start the background at a lower intensity than the hook.
+* Build tension chronologically.
+* Each development should increase the danger or make the situation more difficult.
+* Lead toward one clear payoff.
+* The ending must deliver on the promise made by the hook.
+* Don't introduce a new subject while the existing story is building tension.
+* Never change the subject during a tense sequence.
+
+3. Tension and pacing
+
+* Keep the story moving forward.
+* Don't waste sentences on unnecessary setup.
+* Remove preparation details that don't contribute to understanding the danger.
+* Preserve the sequence of events that makes the danger understandable.
+* Make each sentence create a reason to keep watching.
+* Don't release tension too early.
+* Don't explain the outcome before the viewer needs to know it.
+* Save the answer, consequence, or resolution for the end.
+* Shorter scripts are acceptable if they preserve the tension and make the story understandable.
+
+4. Clarity and language
+
+* Write in language a 9-10-year-old can understand.
+* Use simple, direct words.
+* Make it immediately clear who is doing what.
+* Make it clear what each person wants, what is stopping them, and why their decisions make sense.
+* Avoid ambiguous pronouns, especially when multiple people are involved.
+* Don't make the viewer work to understand the sequence of events.
+* Avoid unnecessary names, dates, ranks, locations, and technical details.
+* Introduce another character only when they are important to the story.
+* Never sacrifice clarity for sophisticated vocabulary.
+
+5. Sentence construction
+
+* Use natural, connected sentences.
+* Each sentence should flow logically into the next.
+* Avoid choppy storytelling.
+* Avoid unnecessary pauses or interruptions.
+* Don't repeat information the viewer already understands.
+* Don't explain something twice.
+* Don't interrupt the action with unrelated historical background.
+* Keep descriptions grounded in what is actually happening.
+* Make the action easy to visualize.
+
+6. Hooks and endings
+
+* The hook should contain the most dramatic or unusual part of the story.
+* Start with an action, danger, impossible situation, or extraordinary decision.
+* Create an immediate question in the viewer's mind.
+* The hook must be supported by the actual story.
+* Foreshadow what makes the situation extraordinary without revealing everything.
+* The body should progressively explain how the opening situation happened.
+* The ending should provide the payoff.
+* The payoff should feel earned, surprising, powerful, or satisfying.
+* Don't finish with a generic moral or unnecessary explanation.
+
+7. Content restrictions
+
+* War stories only.
+* Real historical events and real human actions.
+* No mythology.
+* No standalone weapon explainers.
+* No generic military history lessons.
+* The focus must be on an actual story involving people, decisions, danger, conflict, or consequences.
+* Weapons and military technology can appear when they are necessary to understand the story.
+
+8. Length and formatting
+
+* Target length: 100-150 words.
+* Don't add words just to reach the target.
+* A shorter script is acceptable when the story works. We explicitly approved a 93-word torpedo script because it maintained tension.
+* Keep the writing suitable for short-form video narration.
+* No unnecessary headings inside the script.
+* No em dashes.
+* No unnecessary stage directions or production notes in the narration.
+
+9. Editing rules
+These are particularly important for how we work together:
+
+* Preserve edits that I have made.
+* Never change my edits without being asked.
+* Don't rewrite an entire script when I ask you to fix one sentence.
+* Don't change the ending simply because you think another ending sounds better.
+* Don't introduce new details unless they improve the story.
+* When reviewing a script, identify what is wrong before proposing changes.
+* Don't optimize for elegance at the expense of storytelling.
+* The objective is not to make the writing sound sophisticated. It is to make the viewer understand, care, and keep watching.
+
+10. The final quality test
+Before accepting any script, check:
+
+* Is the story immediately understandable?
+* Does the opening create curiosity?
+* Is there one clear central story?
+* Does every sentence contribute?
+* Is the chronology easy to follow?
+* Does the tension increase?
+* Are all actions and decisions understandable?
+* Are there unnecessary details, names, or characters?
+* Are pronouns unambiguous?
+* Is the language simple enough for a 9-10-year-old?
+* Does the story maintain tension without unnecessary setup?
+* Does the ending deliver a proper payoff?
+* Does the script make the viewer want the next sentence?
+
+The most important distinction: We are not trying to tell the viewer everything that happened. We are telling them just enough to understand the story, care about what happens, and desperately want to know what happens next.
+Note: I couldn't retrieve the shared conversation directly because the link timed out. This reconstruction uses the rules and decisions recoverable from our previous discussions, so I can't guarantee it captures every individual rule from that link.

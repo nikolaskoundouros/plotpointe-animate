@@ -1,0 +1,30 @@
+{
+ "opened_from": "/tmp/preview_elsewhere/scenes/SCENE_dock.blend",
+ "libraries": {
+  "//../library/dock.blend": true,
+  "//../library/officer.blend": true
+ },
+ "missing_images": [],
+ "collections": {
+  "ENV_dock": 31,
+  "LIGHTS": 1,
+  "CAMERA": 1,
+  "CHARACTER_officer": 25,
+  "OFFICER_place": 1
+ },
+ "officer_override": true,
+ "rig": "HG_Elwood",
+ "rig_is_override": true,
+ "camera": "SHOT_camera",
+ "camera_keys": [
+  "keyed (layered action)"
+ ],
+ "frames": [
+  1,
+  240
+ ],
+ "lens_by_frame": {
+  "1": 27.72,
+  "240": 55.43
+ }
+}

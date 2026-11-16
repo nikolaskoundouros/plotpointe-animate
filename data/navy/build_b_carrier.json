@@ -1,0 +1,59 @@
+{
+ "tag": "b_carrier",
+ "name": "SCENE_carrier_battleship",
+ "render": [
+  "CYCLES",
+  508,
+  854,
+  200,
+  160,
+  6,
+  "Standard",
+  1,
+  240
+ ],
+ "env": [
+  "SKY",
+  "SHIP_carrier",
+  "SHIP_battleship",
+  "SEA"
+ ],
+ "camera_start": {
+  "name": "SHOT_camera",
+  "lens": 29.508,
+  "shift": [
+   -0.0,
+   -0.40866509079933167
+  ]
+ },
+ "lights": [
+  "SEA_sun"
+ ],
+ "zoom_target": [
+  2.97,
+  81.97,
+  18.08
+ ],
+ "zoom": {
+  "lens": [
+   29.51,
+   36.89
+  ],
+  "frames": [
+   1,
+   240
+  ],
+  "target_px_first": [
+   279.4,
+   427.0
+  ],
+  "target_px_last": [
+   279.4,
+   427.0
+  ]
+ },
+ "saved": "/Users/nick/Desktop/aow-modules/navy_preview/work/scenes/SCENE_carrier_battleship.blend",
+ "libraries": [
+  "//../library/carrier_battleship.blend"
+ ]
+}

@@ -1,0 +1,132 @@
+[
+ {
+  "doc": "1CUoRRCFu0kCRGK0ILDjg5DB3m7ftY_DZklxIOtWkNSw",
+  "title": "He Told His Own Guns to Fire on Him",
+  "edits": 4,
+  "first_edit": "2026-11-12T11:11:51+02:00",
+  "last_edit": "2026-11-12T11:22:33+02:00",
+  "approved_at": null,
+  "approved_by": null,
+  "storyboard": null
+ },
+ {
+  "doc": "1hUCpjJqkpXl-scYdgPM2YqluA2wuXNhYjv0rZjRn1w8",
+  "title": "Horses Versus Warships",
+  "edits": 2,
+  "first_edit": "2026-11-09T22:18:46+02:00",
+  "last_edit": "2026-11-09T22:46:04+02:00",
+  "approved_at": null,
+  "approved_by": null,
+  "storyboard": null
+ },
+ {
+  "doc": "1Zgi5YYJSGE_vGbqXGDGV2GbPnldjvVtXOW3TCPh_aKY",
+  "title": "The Bat Bombs",
+  "edits": 21,
+  "first_edit": "2026-11-09T18:38:23+02:00",
+  "last_edit": "2026-11-09T21:27:04+02:00",
+  "approved_at": "2026-11-09T21:45:04+02:00",
+  "approved_by": "Nick",
+  "storyboard": {
+   "status": "done",
+   "shots": 15,
+   "seconds": 30,
+   "started": 1794312821.4468985
+  }
+ },
+ {
+  "doc": "1hP3Ej8XXiEFVd7U1VFk6YH3YtsEI9UowIwQJqhsV7MI",
+  "title": "The Captain Who Sank His Own Ship",
+  "edits": 15,
+  "first_edit": "2026-11-10T09:36:36+02:00",
+  "last_edit": "2026-11-10T10:10:36+02:00",
+  "approved_at": "2026-11-10T10:13:53+02:00",
+  "approved_by": "Nick",
+  "storyboard": {
+   "status": "done",
+   "shots": 19,
+   "seconds": 37,
+   "started": 1794304530.2978954
+  }
+ },
+ {
+  "doc": "1L0o3xzjpvGCqDPnTPYTkg3hfCf346ofq7oVydsAYzas",
+  "title": "The Captain Who Saved His Enemies",
+  "edits": 0,
+  "first_edit": null,
+  "last_edit": null,
+  "approved_at": "2026-11-10T14:29:41+02:00",
+  "approved_by": "Nick",
+  "storyboard": {
+   "status": "failed",
+   "shots": 0,
+   "seconds": 46,
+   "started": 1794313782.9002244
+  }
+ },
+ {
+  "doc": "1co32HGlMPmKAtONbEveF_r2TTi6dm-PpwDwS9OBLpYA",
+  "title": "The Invasion Of The Empty Island",
+  "edits": 0,
+  "first_edit": null,
+  "last_edit": null,
+  "approved_at": "2026-11-10T14:30:38+02:00",
+  "approved_by": "Nick",
+  "storyboard": {
+   "status": "failed",
+   "shots": 0,
+   "seconds": 47,
+   "started": 1794313839.795676
+  }
+ },
+ {
+  "doc": "1TJDc1FhzIIUdph1PrNVhDCJCESrsxV79MZLm3eArWac",
+  "title": "The King Who Ate Poison",
+  "edits": 18,
+  "first_edit": "2026-11-09T14:15:23+02:00",
+  "last_edit": "2026-11-09T15:40:01+02:00",
+  "approved_at": "2026-11-09T16:34:55+02:00",
+  "approved_by": "Nick",
+  "storyboard": null
+ },
+ {
+  "doc": "1Zqo9716INFpA189Lnb2tJEcgc9yddltm2jkmQVscrqg",
+  "title": "The Man Who Wanted Auschwitz",
+  "edits": 33,
+  "first_edit": "2026-11-09T00:22:13+02:00",
+  "last_edit": "2026-11-09T11:26:59+02:00",
+  "approved_at": "2026-11-09T10:47:19+02:00",
+  "approved_by": "Nick",
+  "storyboard": null
+ },
+ {
+  "doc": "1qviYhcvlyWDrumGUs7Ki8zg56Zd5A81PhGgCxgH5XmM",
+  "title": "The Pig That Almost Started A War",
+  "edits": 11,
+  "first_edit": "2026-11-10T10:39:20+02:00",
+  "last_edit": "2026-11-10T10:56:09+02:00",
+  "approved_at": "2026-11-10T14:10:28+02:00",
+  "approved_by": "Nick",
+  "storyboard": {
+   "status": "failed",
+   "shots": 0,
+   "seconds": 257,
+   "started": 1794312709.4928117
+  }
+ },
+ {
+  "doc": "1hb5FohY1C_Omgv7hK1YXbxm18SGAMeZMcxquvjNC8wg",
+  "title": "The SEAL Who Went Back",
+  "edits": 17,
+  "first_edit": "2026-11-10T15:40:33+02:00",
+  "last_edit": "2026-11-10T15:54:20+02:00",
+  "approved_at": "2026-11-10T16:12:47+02:00",
+  "approved_by": "Nick",
+  "storyboard": {
+   "status": "failed",
+   "shots": 0,
+   "seconds": 372,
+   "started": 1794320842.7531288
+  }
+ }
+]

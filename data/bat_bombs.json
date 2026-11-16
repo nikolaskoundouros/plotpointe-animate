@@ -1,0 +1,655 @@
+{
+ "doc": "1Zgi5YYJSGE_vGbqXGDGV2GbPnldjvVtXOW3TCPh_aKY",
+ "title": "The Bat Bombs",
+ "lines": [
+  "The American military glued tiny firebombs to live bats.",
+  "You see, during World War 2 a dentist wanted to burn down Japan's cities,",
+  "but he had no way to get fire inside them,",
+  "until he thought of bats carrying a firebomb into someone's home,",
+  "so he wrote to the White House with his idea,",
+  "where even the President agreed it was worth looking into,",
+  "but while the military prepared a test on 6000 bats, things took a bad turn where the bats escaped , and flew off with their bombs already activated,",
+  "Reaching the control tower and fuel tanks inside the military base and finally exploding, destroying the whole american base and setting the airfield on fire."
+ ],
+ "words": 117,
+ "seconds": 30,
+ "status": "done",
+ "entities": [
+  {
+   "id": "dentist",
+   "kind": "person",
+   "name": "Dr. Lytle Schuyler Adams",
+   "look": "An American dental surgeon from Irwin, Pennsylvania, aged about 60 in Dec 1941 to 62 in May 1943 (dates 1881–1970). He was a civilian, not in uniform. In the best-known photo he wears a bow tie and examines a bat. He was also a known inventor of an air-mail pick-up system. I could not read his face, hair or build from a source in words, so copy them from photos 1 and 2.",
+   "facts": [
+    {
+     "fact": "Dental surgeon and part-time inventor from Irwin, Pennsylvania",
+     "source": "https://taskandpurpose.com/history/bat-bombs-burned-base/"
+    },
+    {
+     "fact": "Described as a 60-year-old dentist from Irwin, PA at the time of Pearl Harbor (Journal of the History of Dentistry, 2004)",
+     "source": "https://pubmed.ncbi.nlm.nih.gov/15666497/"
+    },
+    {
+     "fact": "Visited Carlsbad Caverns on a New Mexico vacation and heard about Pearl Harbor on his car radio on 7 Dec 1941",
+     "source": "https://taskandpurpose.com/history/bat-bombs-burned-base/"
+    },
+    {
+     "fact": "Sent his proposal to the White House on 12 January 1942",
+     "source": "https://www.airandspaceforces.com/article/1090bats/"
+    },
+    {
+     "fact": "Letter called the bat the 'lowest form of animal life' (wording differs slightly between sources)",
+     "source": "https://taskandpurpose.com/history/bat-bombs-burned-base/"
+    },
+    {
+     "fact": "Set up his lab and office in an auxiliary hangar at the Carlsbad airfield",
+     "source": "https://stripes.com/history/2021-10-05/bat-bombs-new-mexico-tests-project-x-ray-3137452.html"
+    },
+    {
+     "fact": "Photo caption: wearing a bow tie while examining a bat; another shows him loading a bat bomb carrier",
+     "source": "https://www.utterlyinteresting.com/post/project-x-ray-the-dentist-the-bats-and-the-bomb-that-burned-down-america-s-own-base"
+    },
+    {
+     "fact": "Was an acquaintance of First Lady Eleanor Roosevelt",
+     "source": "https://en.wikipedia.org/wiki/Bat_bomb"
+    }
+   ],
+   "photos": [
+    {
+     "url": "https://static.wixstatic.com/media/d5cc5f_c3aadefc564d4f759cd24da543e5d3da~mv2.jpg",
+     "shows": "Dr Lytle Schuyler Adams in a bow tie, examining a bat (wartime US Army photo)",
+     "page": "https://www.utterlyinteresting.com/post/project-x-ray-the-dentist-the-bats-and-the-bomb-that-burned-down-america-s-own-base"
+    },
+    {
+     "url": "https://static.wixstatic.com/media/d5cc5f_790444e95885431eb6aaea19dbd383bf~mv2.jpg",
+     "shows": "'Project X-Ray leader Lytle Doc Adams loads a bat bomb carrier'",
+     "page": "https://www.utterlyinteresting.com/post/project-x-ray-the-dentist-the-bats-and-the-bomb-that-burned-down-america-s-own-base"
+    },
+    {
+     "url": "https://taskandpurpose.com/wp-content/uploads/2024/12/bomb-bat-header-5.jpg",
+     "shows": "Task & Purpose composite built from US Army photos of Dr. Lytle S. Adams",
+     "page": "https://taskandpurpose.com/history/bat-bombs-burned-base/"
+    }
+   ],
+   "image": {
+    "job_id": "e889c3e1-2d3c-409c-93ca-3601fc748a07",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122453_e889c3e1-2d3c-409c-93ca-3601fc748a07.png"
+   }
+  },
+  {
+   "id": "president",
+   "kind": "person",
+   "name": "Franklin D. Roosevelt",
+   "look": "US President, aged 59 and turning 60 on 30 Jan 1942, the month the letter arrived. He was paralysed from the waist down after his 1921 illness, wore iron leg braces, and was never shown in his wheelchair in public. Show him seated, for example at his desk. He wore civilian suits. Copy his face from the NARA wartime portrait and the photo of him signing on 8 Dec 1941.",
+   "facts": [
+    {
+     "fact": "Born 30 January 1882",
+     "source": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt"
+    },
+    {
+     "fact": "Paralysed from the waist down after his 1921 polio diagnosis; walked short distances with iron braces; careful never to be seen using his wheelchair in public",
+     "source": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt"
+    },
+    {
+     "fact": "Received Adams' letter in January 1942, passed it to William J. Donovan, and approved the plan",
+     "source": "https://en.wikipedia.org/wiki/Bat_bomb"
+    },
+    {
+     "fact": "Widely quoted reply: 'This man is not a nut... it sounds like a perfectly wild idea but is worth looking into' (secondary sources only)",
+     "source": "https://en.wikipedia.org/wiki/Bat_bomb"
+    }
+   ],
+   "photos": [
+    {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Franklin_Roosevelt_signing_declaration_of_war_against_Japan.jpg",
+     "shows": "FDR signing the declaration of war on Japan, 8 Dec 1941, about a month before the letter (Abbie Rowe, NARA 520053)",
+     "page": "https://commons.wikimedia.org/wiki/File:Franklin_Roosevelt_signing_declaration_of_war_against_Japan.jpg"
+    },
+    {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Franklin_D._Roosevelt_-_NARA_-_535943.jpg",
+     "shows": "Wartime portrait of FDR, Office of War Information, dated 1942–45 (NARA 535943)",
+     "page": "https://commons.wikimedia.org/wiki/File:Franklin_D._Roosevelt_-_NARA_-_535943.jpg"
+    }
+   ],
+   "image": {
+    "job_id": "6e891582-d2e6-4721-a214-745b815fc16f",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122456_6e891582-d2e6-4721-a214-745b815fc16f.png"
+   }
+  },
+  {
+   "id": "whitehouse",
+   "kind": "place",
+   "name": "The White House, Washington D.C. (1942)",
+   "look": "White neoclassical mansion. In 1942 the curved South Portico had NO second-floor balcony, because the Truman Balcony was only finished in March 1948. Fabric awnings hung behind the columns instead. Do not use modern photos that show the balcony.",
+   "facts": [
+    {
+     "fact": "The Truman Balcony was finished in March 1948; before that, awnings shaded the portico",
+     "source": "https://en.wikipedia.org/wiki/Truman_Balcony"
+    },
+    {
+     "fact": "The photo of FDR's fourth inaugural (1945) shows the south face before the balcony, with awnings",
+     "source": "https://en.wikipedia.org/wiki/Truman_Balcony"
+    }
+   ],
+   "photos": [
+    {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Franklin_Roosevelt_1945_Inaugural_Address.jpg",
+     "shows": "South Portico in January 1945, with no balcony and awnings visible (FDR's 4th inaugural)",
+     "page": "https://en.wikipedia.org/wiki/File:Franklin_Roosevelt_1945_Inaugural_Address.jpg"
+    }
+   ],
+   "image": {
+    "job_id": "3e6d21d3-3f19-4f34-b3e1-adc30cc03f6c",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122452_3e6d21d3-3f19-4f34-b3e1-adc30cc03f6c.png"
+   }
+  },
+  {
+   "id": "bats",
+   "kind": "prop",
+   "name": "Mexican free-tailed bats (Tadarida brasiliensis)",
+   "look": "A small bat about 9 cm long, weighing about 7–12 g, with dark brown to grey fur. It has wide, rounded ears that nearly meet over the face, deep wrinkles on the upper lip, and long, narrow, pointed wings. Its tail sticks out past the wing membrane. The test bats were caught at Carlsbad Caverns and chilled into hibernation before use.",
+   "facts": [
+    {
+     "fact": "Size, weight, colour, ears, lip wrinkles, wings and free tail",
+     "source": "https://en.wikipedia.org/wiki/Mexican_free-tailed_bat"
+    },
+    {
+     "fact": "Picked because it was numerous, could carry a load, and was tough enough to survive the drop",
+     "source": "https://www.americanheritage.com/ii-bats-away"
+    },
+    {
+     "fact": "Army officers collected the test bats from Carlsbad Caverns",
+     "source": "https://www.nps.gov/articles/batbombsandballoons.htm"
+    },
+    {
+     "fact": "Chilled to about 40°F in ice-cube trays to put them into hibernation",
+     "source": "https://stripes.com/history/2021-10-05/bat-bombs-new-mexico-tests-project-x-ray-3137452.html"
+    },
+    {
+     "fact": "About 6,000 bats were used across the Army experiments (the script's '6000'). Around 3,500 were collected for the May 1943 Muroc/Carlsbad drops",
+     "source": "https://www.airandspaceforces.com/article/1090bats/"
+    }
+   ],
+   "photos": [
+    {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Tadarida_brasiliensis_outflight_Hristov_Carlsbad_Caverns.jpg",
+     "shows": "Bats flying out of Carlsbad Caverns, NM, the source colony (modern photo)",
+     "page": "https://en.wikipedia.org/wiki/Mexican_free-tailed_bat"
+    }
+   ],
+   "image": {
+    "job_id": "b0caf360-ecab-4e01-9a0e-5c97aef6a8da",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122455_b0caf360-ecab-4e01-9a0e-5c97aef6a8da.png"
+   }
+  },
+  {
+   "id": "bomblet",
+   "kind": "prop",
+   "name": "Napalm bat incendiary (Fieser H-2 unit)",
+   "look": "A tiny oblong capsule with a celluloid or nitrocellulose case, about 3/4 inch wide and 2.5 inches long, filled with napalm (thickened kerosene) gel. It hung under the bat's chest, fixed to the loose chest skin with a surgical clip and a string; some sources say it was glued. It came in two sizes, 17 g and 28 g. The 17 g unit burned about 4 minutes with a 10-inch flame. It burns rather than explodes.",
+   "facts": [
+    {
+     "fact": "Celluloid case about 3/4 in by 2.5 in, napalm gel, attached by surgical clip and string",
+     "source": "https://www.americanheritage.com/ii-bats-away"
+    },
+    {
+     "fact": "17 g and 28 g sizes; 17 g burned about 4 min with a 10 in flame; delay igniter where copper chloride ate through a steel wire to release a firing pin",
+     "source": "https://www.airandspaceforces.com/article/1090bats/"
+    },
+    {
+     "fact": "Wikipedia says an H-2 napalm unit was glued to the bat's front",
+     "source": "https://en.wikipedia.org/wiki/Bat_bomb"
+    },
+    {
+     "fact": "Designed by Harvard chemist Louis F. Fieser",
+     "source": "https://www.americanheritage.com/ii-bats-away"
+    }
+   ],
+   "photos": [
+    {
+     "url": "https://static.wixstatic.com/media/d5cc5f_7beb3f6b95494b1fb19bfef5818120ea~mv2.jpg",
+     "shows": "Mexican free-tailed bat hanging from a branch with a small incendiary attached",
+     "page": "https://www.utterlyinteresting.com/post/project-x-ray-the-dentist-the-bats-and-the-bomb-that-burned-down-america-s-own-base"
+    }
+   ],
+   "image": null
+  },
+  {
+   "id": "canister",
+   "kind": "prop",
+   "name": "Bat bomb carrier canister",
+   "look": "A bomb-shaped sheet-metal casing about 1.5 m (5 ft) long. Inside were 26 stacked round cardboard trays, each about 76 cm (30 in) across with 40 compartments, holding 1,040 sleeping bats in all. It was dropped by parachute, and its sides fell away at about 1,000–4,000 ft to release the bats.",
+   "facts": [
+    {
+     "fact": "Sheet-metal tube about 1.5 m long, 26 trays about 76 cm across, 1,040 bats, parachute release",
+     "source": "https://en.wikipedia.org/wiki/Bat_bomb"
+    },
+    {
+     "fact": "Canister photo dated 1942, US Army Air Forces, from Couffer's 'Bat Bomb' (1992)",
+     "source": "https://commons.wikimedia.org/wiki/File:Bat_Bomb_Canister.jpg"
+    }
+   ],
+   "photos": [
+    {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Bat_Bomb_Canister.jpg",
+     "shows": "The bat bomb canister (USAAF)",
+     "page": "https://commons.wikimedia.org/wiki/File:Bat_Bomb_Canister.jpg"
+    },
+    {
+     "url": "https://taskandpurpose.com/wp-content/uploads/2024/12/bat-bomb-casing.jpg",
+     "shows": "Bat bomb casing built to open at 1,000 ft (US Army photos)",
+     "page": "https://taskandpurpose.com/history/bat-bombs-burned-base/"
+    },
+    {
+     "url": "https://static.wixstatic.com/media/d5cc5f_2130dd742c4e4d06a308a44b5d8eb00e~mv2.webp",
+     "shows": "The canister that would be dropped holding the bats",
+     "page": "https://www.utterlyinteresting.com/post/project-x-ray-the-dentist-the-bats-and-the-bomb-that-burned-down-america-s-own-base"
+    }
+   ],
+   "image": {
+    "job_id": "3b6d046b-14fd-413a-a8a9-50f8ee7c2977",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122455_3b6d046b-14fd-413a-a8a9-50f8ee7c2977.png"
+   }
+  },
+  {
+   "id": "base",
+   "kind": "place",
+   "name": "Carlsbad Army Airfield Auxiliary Air Base (Aux #1, Harkey Crossing), near Carlsbad, New Mexico",
+   "look": "Flat desert scrub. A satellite field about 5 miles from the main Carlsbad AAF bombardier school, built in 1942–43. It had four asphalt runways and newly built, plain wooden temporary buildings: a control tower, hangar(s), barracks, offices and a fuel tank. Main-base photos from 1944 show tar-paper barracks of this kind. It was a small field, not a big base.",
+   "facts": [
+    {
+     "fact": "Satellite of Carlsbad AAF about 5 mi NW, built 1942–43, four asphalt runways; used for Project X-Ray",
+     "source": "https://airfieldsfreeman.com/NM/Airfields_NM_SE.htm"
+    },
+    {
+     "fact": "Main Carlsbad AAF activated 12 Oct 1942; bombardier school flying Beech AT-11 Kansans",
+     "source": "https://en.wikipedia.org/wiki/Cavern_City_Air_Terminal"
+    },
+    {
+     "fact": "Bats roosted in the control tower, barracks and other buildings, all newly built",
+     "source": "https://taskandpurpose.com/history/bat-bombs-burned-base/"
+    },
+    {
+     "fact": "Bats roosted in the control tower, hangars, offices and barracks",
+     "source": "https://www.nps.gov/articles/batbombsandballoons.htm"
+    },
+    {
+     "fact": "Bats roosted under a fuel tank",
+     "source": "https://en.wikipedia.org/wiki/Bat_bomb"
+    }
+   ],
+   "photos": [
+    {
+     "url": "https://taskandpurpose.com/wp-content/uploads/2024/12/carlsbad-bat-cages.jpg",
+     "shows": "Bat cage set up at the Carlsbad base during testing (US Army)",
+     "page": "https://taskandpurpose.com/history/bat-bombs-burned-base/"
+    }
+   ],
+   "image": {
+    "job_id": "ba94fd15-d8e1-473c-9d3f-041d85d36781",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122456_ba94fd15-d8e1-473c-9d3f-041d85d36781.png"
+   }
+  },
+  {
+   "id": "fire",
+   "kind": "place",
+   "name": "Carlsbad auxiliary field fire, 15 May 1943",
+   "look": "Burning wooden buildings and a smoke column over the desert airfield. Base staff were kept behind locked gates and watched, and no fire crews were called because the project was secret. Nobody was reported hurt. The fires were incendiary burns, not explosions.",
+   "facts": [
+    {
+     "fact": "15 May 1943; bats roosted under a fuel tank and burned the test range",
+     "source": "https://en.wikipedia.org/wiki/Bat_bomb"
+    },
+    {
+     "fact": "Bats were armed for a staged Signal Corps photo session, woke early in the heat and flew off; Adams said it showed what six bats could do",
+     "source": "https://www.utterlyinteresting.com/post/project-x-ray-the-dentist-the-bats-and-the-bomb-that-burned-down-america-s-own-base"
+    },
+    {
+     "fact": "Firefighting was not called out to keep the project secret; no injuries or deaths",
+     "source": "https://taskandpurpose.com/history/bat-bombs-burned-base/"
+    },
+    {
+     "fact": "Personnel watched from behind locked gates as 'most of their facilities went up in flames'",
+     "source": "https://www.nps.gov/articles/batbombsandballoons.htm"
+    },
+    {
+     "fact": "Fire photo is USAAF, dated 15 May 1943, from Couffer's 'Bat Bomb'",
+     "source": "https://commons.wikimedia.org/wiki/File:Carlsbad_AAF_Fire_after_Bat_Bomb_Accident.jpg"
+    }
+   ],
+   "photos": [
+    {
+     "url": "https://static.wixstatic.com/media/d5cc5f_58ec889863d947b5b47c97ba10867d6b~mv2.jpg",
+     "shows": "The Carlsbad Army Air Base after the bat bomb test",
+     "page": "https://www.utterlyinteresting.com/post/project-x-ray-the-dentist-the-bats-and-the-bomb-that-burned-down-america-s-own-base"
+    }
+   ],
+   "image": {
+    "job_id": "b615f7b0-f864-4a5b-945a-61cb10568649",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122453_b615f7b0-f864-4a5b-945a-61cb10568649.png"
+   }
+  },
+  {
+   "id": "soldiers",
+   "kind": "person",
+   "name": "US Army Air Forces / Chemical Warfare Service personnel and Signal Corps photographers (unnamed), May 1943",
+   "look": "Young American enlisted men and officers in the summer khaki cotton service uniform: long-sleeved khaki twill shirt (convertible collar by 1942), khaki trousers, and from Feb 1942 a khaki tie. They wore a khaki garrison cap with branch-colour piping, an olive-drab M-1937 web belt with a frame buckle, and russet high-top service shoes. Rank chevrons sat midway between shoulder and elbow. Officers wore the same khakis with a khaki tie. There was no olive-drab wool in May in the New Mexico heat.",
+   "facts": [
+    {
+     "fact": "Khaki cotton summer uniform still standard in 1943; shirt and trousers moved to OD in 1944; khaki ties for all ranks from Feb 1942",
+     "source": "https://en.wikipedia.org/wiki/United_States_Army_uniforms_in_World_War_II"
+    },
+    {
+     "fact": "Shirt, trousers, khaki mohair-cotton tie from Feb 1942, garrison cap with branch braid, M-1937 web belt, russet service shoes",
+     "source": "https://www.usww2uniforms.com/ArmyUniformProfile_EM_KhakiCottonService41-42.html"
+    },
+    {
+     "fact": "Army Air Force and Chemical Warfare Service ran the project until it went to the Navy and Marines in Aug 1943",
+     "source": "https://www.americanheritage.com/ii-bats-away"
+    },
+    {
+     "fact": "Signal Corps photographers asked for live-armed bats to film",
+     "source": "https://www.utterlyinteresting.com/post/project-x-ray-the-dentist-the-bats-and-the-bomb-that-burned-down-america-s-own-base"
+    }
+   ],
+   "photos": [
+    {
+     "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Carlsbad_Army_Airfield_-_Loading_Concrete_Practice_Bombs_on_AT-11.jpg",
+     "shows": "Carlsbad AAF ground crew loading practice bombs on an AT-11, 1944 (USAAF)",
+     "page": "https://commons.wikimedia.org/wiki/File:Carlsbad_Army_Airfield_-_Loading_Concrete_Practice_Bombs_on_AT-11.jpg"
+    },
+    {
+     "url": "https://static.wixstatic.com/media/d5cc5f_f969a4e710534a7789d42efb24cc8c08~mv2.jpg",
+     "shows": "'The Project X team', a group photo of the real team",
+     "page": "https://www.utterlyinteresting.com/post/project-x-ray-the-dentist-the-bats-and-the-bomb-that-burned-down-america-s-own-base"
+    }
+   ],
+   "image": {
+    "job_id": "a2d4896e-7779-40ce-af99-7c63ea0c7c5d",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122453_a2d4896e-7779-40ce-af99-7c63ea0c7c5d.png"
+   }
+  },
+  {
+   "id": "b25",
+   "kind": "aircraft",
+   "name": "North American B-25 Mitchell (B-25C/D) – drop aircraft",
+   "look": "Twin-engine medium bomber with Wright R-2600 radial engines, twin tail fins and a gull wing. The C/D models of 1943 had a glazed bombardier nose. Wartime USAAF olive drab over neutral grey, with the star insignia.",
+   "facts": [
+    {
+     "fact": "A B-25 dropped the canisters (Muroc drops on 21 May 1943 from 5,000 ft)",
+     "source": "https://www.airandspaceforces.com/article/1090bats/"
+    },
+    {
+     "fact": "A B-25 dropped the canister at the Carlsbad test",
+     "source": "https://www.utterlyinteresting.com/post/project-x-ray-the-dentist-the-bats-and-the-bomb-that-burned-down-america-s-own-base"
+    },
+    {
+     "fact": "B-25C/D were the main production models; twin fins, glazed nose, gull wing",
+     "source": "https://en.wikipedia.org/wiki/North_American_B-25_Mitchell"
+    }
+   ],
+   "photos": [],
+   "image": {
+    "job_id": "2d4140a6-1f3a-4c0f-af8e-436d53975971",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122452_2d4140a6-1f3a-4c0f-af8e-436d53975971.png"
+   }
+  },
+  {
+   "id": "japan",
+   "kind": "place",
+   "name": "Japanese cities (residential wooden districts, e.g. Tokyo)",
+   "look": "Dense streets of low one- and two-storey wooden houses and shops with tiled roofs, paper and wood inside, and no cellars. US planners counted on how easily they would burn. Use pre-war 1930s street scenes.",
+   "facts": [
+    {
+     "fact": "Bats were meant to roost in Japan's mostly wooden buildings",
+     "source": "https://www.nps.gov/articles/batbombsandballoons.htm"
+    },
+    {
+     "fact": "June 1942 press: 'wood and paper and bamboo dwellings', 'flimsy, cellarless, wooden houses' in Tokyo",
+     "source": "https://dynamic-rsnz.natlib.govt.nz/newspapers/WAITA19420623.2.49"
+    }
+   ],
+   "photos": [],
+   "image": {
+    "job_id": "efdb4183-64dd-43d3-83aa-d338979c6f7e",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122456_efdb4183-64dd-43d3-83aa-d338979c6f7e.png"
+   }
+  }
+ ],
+ "shots": [
+  {
+   "words": "The American military glued tiny firebombs to live bats.",
+   "entities": [
+    "soldiers",
+    "bats",
+    "bomblet",
+    "base"
+   ],
+   "prompt": "Flash-forward hook, May 1943, inside a plain wooden temporary building at the Carlsbad auxiliary field. Extreme close-up on a workbench: the hands of a young US Army soldier in a long-sleeved khaki twill shirt fix a small oblong celluloid napalm capsule (about 2.5 in long, 3/4 in wide) under the chest of a limp, chilled Mexican free-tailed bat. Show the bat's dark brown-grey fur, wide rounded ears, wrinkled upper lip, folded narrow wings and tail sticking past the membrane. The capsule hangs from the loose chest skin with a small surgical clip and string. Slow push-in, shallow depth of field, cool morning daylight from a side window. No flames.",
+   "image": {
+    "job_id": "d7dfdba3-6fc1-46da-90ce-874045319a3d",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122649_d7dfdba3-6fc1-46da-90ce-874045319a3d.png"
+   },
+   "check": null
+  },
+  {
+   "words": "You see, during World War 2 a dentist",
+   "entities": [
+    "dentist"
+   ],
+   "prompt": "December 1941, Irwin, Pennsylvania. Medium shot of Dr. Lytle S. Adams, about 60, a civilian in shirt and bow tie (face, hair and build copied from reference photos 1 and 2), standing beside a 1940s dental chair and instrument tray in his small surgery. He looks down at a folded newspaper about the war. Grey overcast winter afternoon light through a frosted window, muted cool tones. Static camera, eye level.",
+   "image": {
+    "job_id": "5e744de4-f514-49bc-b937-f0a497c8d303",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122651_5e744de4-f514-49bc-b937-f0a497c8d303.png"
+   },
+   "check": null
+  },
+  {
+   "words": "wanted to burn down Japan's cities,",
+   "entities": [
+    "japan"
+   ],
+   "prompt": "Pre-war 1930s Tokyo residential district seen in a high wide shot: dense rows of low one- and two-storey wooden houses and shops with grey tiled roofs, narrow lanes, no modern buildings. Hazy, flat daylight, period documentary feel. Slow lateral drift across the rooftops. No fire, no aircraft; this is the target as Adams pictured it.",
+   "image": {
+    "job_id": "ac60c1f6-e3bb-4855-a630-d301b2ffbd77",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122650_ac60c1f6-e3bb-4855-a630-d301b2ffbd77.png"
+   },
+   "check": null
+  },
+  {
+   "words": "but he had no way to get fire inside them,",
+   "entities": [
+    "japan"
+   ],
+   "prompt": "Dusk in a narrow 1930s Tokyo lane. Closer, street-level shot of one wooden two-storey house: tiled roof with deep eaves, wooden walls, sliding paper-and-wood screens shut, a paper lantern glowing by the door. Camera tilts up slowly to the dark gap under the eaves, the way into the house. Blue-hour light with a warm glow behind the paper screens. No people in focus, no flames.",
+   "image": {
+    "job_id": "74e2c5ea-e89f-41db-9ebe-9a9f52bc79f7",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122652_74e2c5ea-e89f-41db-9ebe-9a9f52bc79f7.png"
+   },
+   "check": null
+  },
+  {
+   "words": "until he thought of bats carrying a firebomb into someone's home,",
+   "entities": [
+    "dentist",
+    "bats"
+   ],
+   "prompt": "Night, winter 1941–42, Adams's home study. Medium close-up of Dr. Adams in bow tie (face from reference photos) seated at a lamplit desk, closely examining a small Mexican free-tailed bat held in his fingers, as in his best-known photo. On the desk lies a rough pencil sketch of a bat with a small capsule under its chest beside a house roof. Warm single desk-lamp light, deep shadows, slow push-in on his face.",
+   "image": {
+    "job_id": "26a524c4-b3e1-48a5-8604-9902b3d9504b",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122652_26a524c4-b3e1-48a5-8604-9902b3d9504b.png"
+   },
+   "check": null
+  },
+  {
+   "words": "so he wrote to the White House with his idea,",
+   "entities": [
+    "whitehouse"
+   ],
+   "prompt": "January 1942. Wide exterior of the White House South Portico on a grey winter morning: white neoclassical mansion with a curved colonnade, fabric awnings behind the columns, and NO second-floor (Truman) balcony. Bare trees, light snow on the lawn, pale overcast sky. Slow dolly-in. Period-accurate, no modern details.",
+   "image": {
+    "job_id": "28f49a47-2c16-4bd9-84b7-7f469b461a4c",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122653_28f49a47-2c16-4bd9-84b7-7f469b461a4c.png"
+   },
+   "check": null
+  },
+  {
+   "words": "where even the President agreed it was worth looking into,",
+   "entities": [
+    "president"
+   ],
+   "prompt": "January 1942, White House office interior. Medium shot of President Franklin D. Roosevelt, 59–60, in a dark civilian suit, seated behind his desk (no wheelchair or leg braces visible; face copied from the NARA wartime portrait and the 8 Dec 1941 signing photo). He reads a typed letter, nods, and writes a short note on it with a fountain pen. Warm afternoon lamplight mixed with soft window light, flags and desk items behind him. Gentle static framing.",
+   "image": {
+    "job_id": "6c18d71b-fa82-4b3e-a4f5-c0e1992db175",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122654_6c18d71b-fa82-4b3e-a4f5-c0e1992db175.png"
+   },
+   "check": null
+  },
+  {
+   "words": "but while the military prepared a test on 6000 bats,",
+   "entities": [
+    "base",
+    "soldiers",
+    "bats",
+    "canister",
+    "b25"
+   ],
+   "prompt": "15 May 1943, Carlsbad Army Airfield auxiliary field (Harkey Crossing), New Mexico. Wide establishing shot on a clear, bright desert morning: flat scrub, asphalt runway, a few plain new wooden temporary buildings including a small control tower and a hangar, an olive-drab B-25C/D Mitchell with a glazed nose and twin tails parked nearby. Young soldiers in summer khaki shirts, trousers, ties and garrison caps carry stacked round cardboard trays of chilled, sleeping bats toward a 5-ft sheet-metal bomb-shaped canister. Crisp morning sun, long soft shadows. A small field, not a big base.",
+   "image": {
+    "job_id": "c3b6e28c-5495-4c22-b586-2f5e75881dde",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122651_c3b6e28c-5495-4c22-b586-2f5e75881dde.png"
+   },
+   "check": null
+  },
+  {
+   "words": "things took a bad turn",
+   "entities": [
+    "bats",
+    "bomblet",
+    "soldiers"
+   ],
+   "prompt": "Midday, same field. Close-up from above on an open cardboard tray compartment sitting in harsh overhead sun: chilled Mexican free-tailed bats, each with a small celluloid napalm capsule clipped under its chest, begin to warm and stir. One bat twitches its narrow wings and lifts its head. A soldier's khaki sleeve is just in frame. Hard white noon light, heat shimmer, tense slow zoom.",
+   "image": {
+    "job_id": "3061afc3-bc3c-42db-bbe3-99610df6cb24",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122652_3061afc3-bc3c-42db-bbe3-99610df6cb24.png"
+   },
+   "check": null
+  },
+  {
+   "words": "where the bats escaped ,",
+   "entities": [
+    "bats",
+    "soldiers",
+    "bomblet"
+   ],
+   "prompt": "Midday. Low-angle shot from tray level as several bats flutter up and away past a startled young soldier in khaki shirt and garrison cap, his hands reaching too late. Capsules visible under the bats' chests. Bright blue sky, harsh sun, quick tilt up following the bats.",
+   "image": {
+    "job_id": "359d2c6d-27d6-45cb-aede-e13534cc5836",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122649_359d2c6d-27d6-45cb-aede-e13534cc5836.png"
+   },
+   "check": null
+  },
+  {
+   "words": "and flew off with their bombs already activated,",
+   "entities": [
+    "bats",
+    "bomblet",
+    "base"
+   ],
+   "prompt": "Early afternoon. Long-lens shot of a few small bats flying low over desert scrub toward the auxiliary field's wooden buildings, each with a small oblong capsule hanging under its chest (unlit, timed igniters armed). Heat haze, bright but slightly warmer afternoon light. Camera tracks the bats from behind.",
+   "image": {
+    "job_id": "8b8e2554-8e13-4b9a-86d4-604f34c9a5b4",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122650_8b8e2554-8e13-4b9a-86d4-604f34c9a5b4.png"
+   },
+   "check": null
+  },
+  {
+   "words": "Reaching the control tower and fuel tanks",
+   "entities": [
+    "bats",
+    "bomblet",
+    "base"
+   ],
+   "prompt": "Afternoon. Two-part composition in one frame: in the foreground, bats with capsules clinging and crawling into the shaded eaves of the plain wooden control tower; in the background, bats settling near the base of the field's fuel tank. Raw new timber and tar paper, warm afternoon side light, deep shade under the eaves. Slow pan from tower to tank.",
+   "image": {
+    "job_id": "a72fb6fb-ec28-44ce-b9c0-d431eb50e316",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122650_a72fb6fb-ec28-44ce-b9c0-d431eb50e316.png"
+   },
+   "check": null
+  },
+  {
+   "words": "inside the military base and finally exploding,",
+   "entities": [
+    "bomblet",
+    "bats",
+    "base"
+   ],
+   "prompt": "Late afternoon. Close-up under the eaves of a wooden building: a napalm capsule ignites with a sudden burst of bright orange flame about 10 inches tall that licks up the dry wooden boards (an incendiary flare-up, not a blast; no shockwave or debris). Flickering firelight against warm low sun. Quick punch-in on the flame.",
+   "image": {
+    "job_id": "b0d4cd1a-c25a-44e3-b3c4-8a9258aacdfe",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122817_b0d4cd1a-c25a-44e3-b3c4-8a9258aacdfe.png"
+   },
+   "check": null
+  },
+  {
+   "words": "destroying the whole american base",
+   "entities": [
+    "fire",
+    "base"
+   ],
+   "prompt": "Late afternoon, golden light. Wide shot of the small auxiliary field: the wooden control tower and a hangar engulfed in flames, fire spreading through wooden buildings, a thick black smoke column rising over the desert. No explosions and no fire trucks. Slow crane-up revealing the burning buildings across the flat field.",
+   "image": {
+    "job_id": "d9440454-aed9-41e1-833d-641dc3219e1f",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122816_d9440454-aed9-41e1-833d-641dc3219e1f.png"
+   },
+   "check": null
+  },
+  {
+   "words": "and setting the airfield on fire.",
+   "entities": [
+    "fire",
+    "base",
+    "soldiers"
+   ],
+   "prompt": "Sunset. Extreme wide shot from behind a locked wire gate: silhouetted base staff in khaki uniforms and garrison caps stand and watch, unable to act, as the smoke column and orange glow rise over the asphalt runways and burning wooden buildings across the desert. No fire crews. Deep orange and red sky, long shadows, slow pull-back to end.",
+   "image": {
+    "job_id": "1f2b9330-de45-46de-a947-c09ccf0c9768",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GFUulmElwptHJhGQPGDd02zEqL/hf_20261110_122817_1f2b9330-de45-46de-a947-c09ccf0c9768.png"
+   },
+   "check": null
+  }
+ ],
+ "log": [
+  {
+   "at": 1794312821.447489,
+   "agent": "Visual Researcher",
+   "text": "117 words, about 30 seconds, so 15 shots. Finding how everyone and everything really looked."
+  },
+  {
+   "at": 1794313336.5762985,
+   "agent": "Photo Finder",
+   "text": "Dr. Lytle Schuyler Adams: 3 real photos; Franklin D. Roosevelt: 2 real photos; The White House, Washington D.C. (1942): 1 real photos; Mexican free-tailed bats (Tadarida brasiliensis): 1 real photos; Napalm bat incendiary (Fieser H-2 unit): 1 real photos; Bat bomb carrier canister: 3 real photos; Carlsbad Army Airfield Auxiliary Air Base (Aux #1, Harkey Crossing), near Carlsbad, New Mexico: 1 real photos; Carlsbad auxiliary field fire, 15 May 1943: 1 real photos; US Army Air Forces / Chemical Warfare Service personnel and Signal Corps photographers (unnamed), May 1943: 2 real photos; North American B-25 Mitchell (B-25C/D) – drop aircraft: 0 real photos; Japanese cities (residential wooden districts, e.g. Tokyo): 0 real photos"
+  },
+  {
+   "at": 1794313403.286848,
+   "agent": "Shot Planner",
+   "text": "15 shots planned, each tied to its words and to the fact sheet."
+  },
+  {
+   "at": 1794313403.289694,
+   "agent": "Bible Artist",
+   "text": "Making the 11 reference images from the real photos."
+  },
+  {
+   "at": 1794313546.8306904,
+   "agent": "Shot Artist",
+   "text": "Making the 15 shots, each from its bible images."
+  },
+  {
+   "at": 1794313730.9696474,
+   "agent": "Shot Artist",
+   "text": "15 of 15 shots made."
+  }
+ ],
+ "started": 1794312821.4468985
+}

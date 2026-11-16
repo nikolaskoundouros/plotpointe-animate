@@ -1,0 +1,1 @@
+{"name": "SCENE_cruiser", "short": "cruiser", "title": "cruiser at sea, slow zoom on the ship", "set_lib": "cruiser.blend", "camera": "SHOT_camera", "officer": null, "zoom": {"frac": [0.48, 0.52], "factor": 1.35}, "notes": ["The waves move over the frame range (the ocean's time is keyed in the library)."], "check_samples": 48}

@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PlotPointe · Animate</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap">
+<style>
+/* ---- PlotPointe's own look: these rules are copied from telegram/app.html so this screen matches the rest ---- */
+:root{--bg:#181a1b;--ink:#e8e6e3;--soft:rgba(232,230,227,.72);--faint:rgba(232,230,227,.46);--line:rgba(232,230,227,.1)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:var(--bg);color:var(--ink);font:400 16px/1.75 Inter,-apple-system,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+.dot{position:fixed;top:32px;left:50%;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--ink)}
+main{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:96px 24px 64px}
+.screen{width:100%;max-width:560px;animation:in .5s ease both}
+.screen.wide{max-width:820px}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+h1{font-size:clamp(32px,6vw,42px);line-height:1.25;font-weight:300;letter-spacing:-.03em}
+h1::after{content:"";display:block;width:40px;height:1px;background:var(--faint);margin-top:22px}
+p{color:var(--soft);margin-top:24px}
+.label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+button,a.btn{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:0;cursor:pointer;text-decoration:none}
+:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.go{display:inline-block;margin-top:32px;background:var(--ink);color:var(--bg);font-size:14px;font-weight:500;border-radius:999px;padding:11px 26px}
+.go[disabled]{opacity:.3;cursor:default}
+.rows{margin-top:30px;border-top:1px solid var(--line)}
+.row.script .track{margin-top:10px;max-width:200px}
+.screen .empty{margin-top:28px}
+.newbtn{margin-top:22px}
+.newtitle{display:block;width:100%;margin-top:28px;padding:12px 16px;background:none;border:1px solid var(--line);border-radius:12px;color:var(--ink);font:300 24px/1.3 Inter,system-ui,sans-serif;letter-spacing:-.02em;outline:none}
+.newtext{display:block;width:100%;margin-top:12px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;font-size:16px;line-height:1.7;overflow:auto;max-height:none}
+.newtitle:focus,.newtext:focus{border-color:var(--faint)}
+.newidea,.ideabox{font-size:17px;line-height:1.6;color:var(--ink);background:none;resize:vertical;font-family:inherit}
+.ideabox{margin-top:12px;width:100%}.ideabox:disabled{border-style:dashed;opacity:1;color:var(--ink)}
+.stepbox .drivefiles{font-size:13px;color:var(--faint)}
+.state.err{margin-top:12px;min-height:22px;color:var(--soft)}
+.row.script em{margin-top:4px}
+.stepbox{padding:18px 0;border-bottom:1px solid var(--line)}
+.stepbox b.name{display:block;font-size:24px;font-weight:300;letter-spacing:-.025em;line-height:1.3}
+.stepbox .state{margin-top:4px;color:var(--soft);font-size:14px}
+.stepbox.wait{opacity:.45}
+.stepbox.done .state{color:var(--ink)}
+.stepbox .go{margin-top:14px}
+.stepbox .reopen{display:block;margin-top:10px;font-size:13px}
+.marks{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.marks .tog i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px}
+.scriptbox{margin-top:12px;padding:18px 20px;border:1px solid var(--line);border-radius:14px;font-size:16px;line-height:1.7;outline:none;background:rgba(232,230,227,.03)}
+.scriptbox:focus{border-color:var(--faint)}
+.scriptbox p{margin:0 0 10px;color:var(--ink)}
+.scriptbox p:last-child{margin-bottom:0}
+.scriptbox strike,.scriptbox s,.scriptbox del{color:var(--faint)}
+.scriptbox b,.scriptbox strong{font-weight:600}
+.scriptbox span[style*="background-color"]{color:#181a1b;border-radius:3px;padding:0 2px}
+.scriptbox[contenteditable="false"]{border-style:dashed}
+.savedat{display:block;margin-top:10px}
+.sbstrip{display:flex;gap:6px;margin-top:14px;padding:0;overflow:hidden;max-width:100%}
+.sbstrip img{width:52px;height:92px;object-fit:cover;border-radius:6px;opacity:.9}
+.sbstrip:hover img{opacity:1}
+.sbopen{display:block;margin-top:10px;font-size:13px}
+.sbscreen{max-width:1060px}
+.shotgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:12px}
+.shot{display:flex;flex-direction:column;gap:6px;text-align:left;padding:0}
+.shot img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;opacity:.88;transition:opacity .15s}
+.shot:hover img,.shot.on img{opacity:1}
+.shot.on img{outline:1px solid var(--ink);outline-offset:2px}
+.shot .words{font-size:13px;line-height:1.45;color:var(--soft)}
+.shotdetail{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:22px;padding:18px;border:1px solid var(--line);border-radius:14px}
+.shotdetail>img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px}
+.shotinfo{display:flex;flex-direction:column;gap:4px;min-width:0}
+.shotinfo .words.big{margin-top:6px;font-size:20px;line-height:1.4;font-weight:300}
+.shotinfo textarea{margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;font-size:14px;line-height:1.5}
+.castrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.castrow .who{display:inline-flex;align-items:center;gap:8px;width:auto;padding:4px 12px 4px 4px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--soft)}
+.castrow .who img,.castrow .who i{width:26px;height:26px;border-radius:50%;object-fit:cover;background:rgba(232,230,227,.06)}
+@media (max-width:720px){.shotdetail{grid-template-columns:1fr}}
+.talk{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.talk:empty{display:none}
+.talk .msg.model{display:flex;flex-direction:column;align-items:flex-start;gap:6px;max-width:100%;color:var(--ink)}
+.talk .msg .change{align-self:stretch;font-size:13px;line-height:1.5;color:var(--soft);white-space:pre-wrap}
+.talk .msg .change s{color:var(--faint);margin-right:8px}
+.talk .job{display:flex;flex-direction:column;gap:7px;font-size:13px}
+.stepbox .input{margin-top:14px}
+.changes{margin-top:14px}
+.changes .change .label{display:block;margin-bottom:2px}
+.changes .change s{color:var(--faint);margin-right:8px}
+.steps{margin-top:22px;border-top:1px solid var(--line)}
+.row{display:block;width:100%;text-align:left;padding:17px 0 16px;border-bottom:1px solid var(--line)}
+.row b{display:block;font-size:clamp(22px,3.4vw,30px);line-height:1.25;font-weight:300;letter-spacing:-.025em;transition:transform .2s}
+.row span{display:block;max-height:0;overflow:hidden;opacity:0;color:var(--soft);font-size:15px;line-height:1.55;transition:max-height .25s,opacity .25s,margin .25s}
+.row:hover b,.row:focus-visible b{transform:translateX(6px)}
+.row:hover span,.row:focus-visible span{max-height:80px;opacity:1;margin:7px 0 0 6px}
+.row em{display:block;margin-top:6px;font-style:normal;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+@keyframes pulse{50%{opacity:.25}}
+.nav{display:none;position:fixed;top:0;left:0;bottom:0;width:240px;z-index:1;flex-direction:column;gap:4px;padding:26px 16px;border-right:1px solid var(--line);background:var(--bg)}
+.nav-on .nav{display:flex}
+.nav-on .dot{display:none}
+.nav-on main{padding-left:264px}
+.nav .brand{padding:0 12px 18px;margin-bottom:8px;border-bottom:1px solid var(--line)}
+.nav button{display:block;width:100%;text-align:left;padding:11px 12px;border-radius:9px;font-size:15px;line-height:1.4;animation:glow 2.2s ease-in-out infinite}
+.nav button:nth-of-type(2){animation-delay:.25s}.nav button:nth-of-type(3){animation-delay:.5s}
+.nav button:hover,.nav button:focus-visible{background:rgba(232,230,227,.08);animation:none;color:var(--ink)}
+.nav button.here{background:rgba(232,230,227,.08);animation:none;color:var(--ink)}
+@media (max-width:720px){.nav{position:static;width:auto;border-right:0;border-bottom:1px solid var(--line)}.nav-on main{padding-left:24px;padding-top:32px}.nav-on{display:block}}
+@keyframes glow{0%,100%{color:var(--soft);text-shadow:0 0 0 rgba(232,230,227,0)}50%{color:var(--ink);text-shadow:0 0 12px rgba(232,230,227,.95)}}
+.desk{position:fixed;inset:0;display:flex;background:var(--bg)}
+.side{width:320px;min-width:0;flex:none;display:flex;flex-direction:column;padding:22px 24px;font-size:14px;line-height:1.6}
+.brand{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:500;letter-spacing:-.035em}
+.brand i{width:10px;height:10px;border-radius:50%;background:var(--ink)}
+.home{display:flex;align-items:center;gap:9px;font:inherit;letter-spacing:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.home:hover{opacity:.75}.home:focus-visible{outline:1px solid var(--ink);outline-offset:4px;border-radius:4px}
+.side h2{font-size:22px;line-height:1.22;font-weight:300;letter-spacing:-.03em;margin-top:18px;overflow-wrap:anywhere}
+.side .label{margin-top:8px}
+.side .brand{position:relative;padding-bottom:14px;margin-bottom:4px;border-bottom:1px solid var(--line)}
+.input{display:flex;align-items:flex-end;gap:8px;border:1px solid var(--line);border-radius:16px;padding:9px 9px 9px 14px;margin-top:12px;transition:border-color .15s}
+.input:focus-within{border-color:var(--faint)}
+.arrow{flex:none;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:15px;line-height:30px;text-align:center}
+.arrow[disabled]{opacity:.22;cursor:default}
+textarea:focus-visible{outline:none}
+textarea{flex:1;min-width:0;max-height:140px;overflow:hidden;padding:4px 0;background:none;border:0;color:var(--ink);font:inherit;letter-spacing:inherit;resize:none;outline:none}
+textarea::placeholder{color:var(--faint)}
+.foot{padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.text{color:var(--faint);font-size:12px;white-space:nowrap}.text:hover{color:var(--ink)}
+.text[disabled]{opacity:.35;cursor:default}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---- new for the Animate screen ---- */
+.work{flex:1;min-width:0;display:flex;flex-direction:column;order:1}
+.stage{flex:1;min-height:0;position:relative;padding:8px 12px}
+.rec{position:absolute;top:20px;right:24px;display:flex;align-items:center;gap:8px}
+.rec::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ink);animation:pulse 1.2s ease-in-out infinite}
+.blender{height:100%;display:grid;grid-template:30px minmax(0,1fr) 58px/minmax(0,1fr) 168px;border:1px dashed var(--faint);border-radius:12px;overflow:hidden}
+.b-top{grid-column:1/3;display:flex;align-items:center;gap:16px;padding:0 14px;border-bottom:1px solid var(--line);white-space:nowrap;overflow:hidden}
+.b-top b{font-weight:500;color:var(--soft)}
+.b-view{position:relative;min-height:0;display:flex;align-items:center;justify-content:center;padding:18px;background:repeating-linear-gradient(0deg,transparent 0 39px,var(--line) 39px 40px),repeating-linear-gradient(90deg,transparent 0 39px,var(--line) 39px 40px)}
+.b-view>.label{position:absolute;top:10px;left:12px}
+.b-props{border-left:1px solid var(--line);padding:10px 12px;display:flex;flex-direction:column;gap:9px}
+.b-props i{display:block;height:8px;border-radius:4px;background:var(--line)}
+.b-time{grid-column:1/3;position:relative;border-top:1px solid var(--line);padding:8px 14px}
+.b-time .ticks{position:absolute;left:14px;right:14px;bottom:10px;height:14px;background:repeating-linear-gradient(90deg,var(--faint) 0 1px,transparent 1px 24px);opacity:.6}
+.b-time .ends{display:flex;justify-content:space-between}
+.frame{position:relative;height:100%;max-height:640px;aspect-ratio:9/16;border-radius:8px;overflow:hidden;background:var(--bg);border:1px solid var(--faint)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;transition:opacity .35s}
+.frame.s1 img{opacity:.4}.frame.s2 img{opacity:.55}.frame.s3 img{opacity:.9}
+.frame .say{position:absolute;inset:auto 0 0 0;padding:64px 22px 24px;background:linear-gradient(to top,rgba(24,26,27,.94) 35%,rgba(24,26,27,0));text-align:center}
+.frame .say b{display:block;font-size:22px;line-height:1.25;font-weight:300;letter-spacing:-.025em}
+.frame .say span{display:block;margin-top:8px;font-size:13px;line-height:1.55;color:var(--soft)}
+.strip{display:flex;gap:8px;padding:10px 24px 16px;overflow-x:auto;scrollbar-color:var(--line) transparent}
+.cell{flex:none;width:44px;text-align:center}
+.cell img{display:block;width:44px;height:78px;object-fit:cover;border-radius:6px;opacity:.45;transition:opacity .15s}
+.cell:hover img{opacity:.8}
+.cell.on img{opacity:1;outline:1px solid var(--ink);outline-offset:2px}
+.cell u{display:block;height:2px;margin-top:6px;border-radius:1px;background:var(--line);text-decoration:none;overflow:hidden}
+.cell u i{display:block;height:100%;background:var(--ink);transition:width .25s}
+.cell .label{display:block;margin-top:4px}
+.cell.on .label{color:var(--ink)}
+.side{overflow-y:auto;scrollbar-color:var(--line) transparent;border-right:1px solid var(--line)}
+.words{margin-top:16px;font-size:19px;line-height:1.4;font-weight:300;letter-spacing:-.02em}
+.ref{display:flex;gap:14px;margin-top:18px}
+.ref>img{flex:none;align-self:flex-start;width:92px;height:auto;max-height:164px;object-fit:cover;border-radius:10px;background:rgba(232,230,227,.05)}
+.cast{flex:1;min-width:0}
+.who{display:flex;align-items:center;gap:9px;width:100%;text-align:left;padding:6px 0;border-top:1px solid var(--line);font-size:13px;line-height:1.4;color:var(--soft)}
+.who:first-of-type{margin-top:6px}
+.who:hover{color:var(--ink)}
+.who img,.who i{flex:none;width:22px;height:39px;object-fit:cover;border-radius:4px;background:rgba(232,230,227,.06)}
+.who span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.look{padding:2px 0 10px 31px;font-size:12.5px;line-height:1.55;color:var(--soft)}
+.prompt{margin-top:6px;font-size:13px;line-height:1.55;color:var(--soft)}
+.prompt.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.act{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.act .go{margin-top:12px}
+.track{display:flex;gap:6px;margin-top:10px}
+.track i{flex:1;height:2px;border-radius:1px;background:var(--line)}
+.track i.done{background:var(--ink)}
+.under{display:flex;gap:16px;margin-top:12px;min-height:22px}
+.notes{margin-top:14px}
+.note{margin-top:10px;padding:8px 13px;background:#212425;border-radius:14px;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.side>*{flex-shrink:0}
+.spacer{flex:1 1 0;min-height:12px}
+.livewin{display:block;width:100%;height:100%;border:0;border-radius:8px;background:#000}
+.opening{position:absolute;top:14px;left:24px;right:24px;bottom:16px;z-index:2;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(24,26,27,.88)}
+.opening .card{width:min(440px,80%);display:flex;flex-direction:column;gap:18px}
+.opening .job{display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--faint)}
+.opening .job.now,.opening .job.done{color:var(--ink)}
+.bar{height:3px;border-radius:2px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:2px;background:var(--ink)}
+.done .bar i{width:100%}
+.now .bar i{width:38%;animation:slide 1.1s ease-in-out infinite}
+@keyframes slide{from{transform:translateX(-100%)}to{transform:translateX(265%)}}
+.frame.live img{opacity:1}
+.frame.live{border-color:var(--line)}
+.b-top .file{margin-left:auto;color:var(--soft);text-transform:none;letter-spacing:.02em;font-size:11px}
+.switch{position:absolute;top:8px;right:12px;display:flex;gap:14px;z-index:1}
+.text.on{color:var(--ink)}
+.b-time.live{cursor:pointer}
+.b-time .mark{position:absolute;bottom:10px;width:1px;height:14px;background:var(--ink);opacity:.55}
+.b-time .head{position:absolute;bottom:6px;width:2px;height:24px;margin-left:-1px;border-radius:1px;background:var(--ink)}
+.b-time .ends{align-items:center}
+.facts{margin-top:6px}
+.fact{padding:6px 0;border-top:1px solid var(--line);font-size:13px;line-height:1.45;color:var(--soft);overflow-wrap:anywhere}
+.fact.plain{border-top:0;padding:2px 0 0}
+span.text{white-space:normal;cursor:default}span.text:hover{color:var(--faint)}
+[hidden]{display:none!important}
+.side{width:340px;overflow:hidden}
+.side>.chat-log{flex:1 1 0;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:14px 0 4px;scrollbar-color:var(--line) transparent}
+.msg{max-width:90%;font-size:14px;line-height:1.5;overflow-wrap:anywhere;white-space:pre-wrap}
+.msg.you{align-self:flex-end;padding:8px 13px;background:#212425;border-radius:14px}
+.msg.pending{display:flex;flex-direction:column;gap:3px}
+.msg.pending .note{font-size:11px;color:var(--faint)}
+.msg.pending.failed .note{color:var(--ink)}
+.msg.pending .text{font-size:11px;text-decoration:underline}
+.msg.model{align-self:flex-start;color:var(--soft)}
+.chat-log .job{display:flex;flex-direction:column;align-items:flex-start;gap:7px;font-size:13px}
+.chat-log .job .bar{width:100%}
+.topbar{display:flex;align-items:center;gap:18px;min-height:30px;padding:10px 16px 0}
+.tag{margin-left:auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tools{display:flex;gap:6px}
+.toggles{margin-left:auto;display:flex;gap:6px}
+.tog{font-size:12px;line-height:1.4;color:var(--faint);padding:4px 12px;border:1px solid var(--line);border-radius:999px}
+.tog:hover{color:var(--ink)}
+.tog.on{color:var(--ink);border-color:var(--faint)}
+.start{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:1px dashed var(--line);border-radius:12px}
+.start .go{margin-top:0}
+.shotsbar{display:flex;align-items:center;gap:14px;padding:9px 24px;border-top:1px solid var(--line)}
+.shotsbar .text{font-size:15px}
+.strip{padding-top:2px}
+.details{order:2;width:300px;flex:none;display:flex;flex-direction:column;overflow-y:auto;padding:22px 24px;border-left:1px solid var(--line);font-size:14px;line-height:1.6;scrollbar-color:var(--line) transparent}
+.details>*{flex-shrink:0}
+.details h2{font-size:22px;line-height:1.22;font-weight:300;letter-spacing:-.03em;overflow-wrap:anywhere}
+.details>.label{margin-top:8px}
+@media (max-width:860px){.desk{position:static;flex-direction:column;min-height:100%}.work{order:0}.stage{height:70vh;flex:none}.side,.details{width:auto;border:0;border-top:1px solid var(--line)}.side>.chat-log{min-height:160px}}
+</style>
+</head>
+<body>
+<div class="dot"></div>
+<main id="app"></main>
+<script>document.write('<script src="data/story.js?'+Date.now()+'"><\/script>')</script><!-- data is asked for fresh every time, like the live setting below -->
+<script>document.write('<script src="data/scripts.js?'+Date.now()+'"><\/script>')</script>
+<script>document.write('<script src="data/storyboards.js?'+Date.now()+'"><\/script>')</script>
+<script>document.write('<script src="data/live.js?'+Date.now()+'"><\/script>')</script><!-- asked for fresh every time: the browser must never show yesterday's answer to "is Blender live" -->
+<script>
+// The storyboards, copied from their source files by tools/build_data.py. The page only reads them.
+const STORIES=window.STORIES;
+const SCRIPTS=window.SCRIPTS||[];
+const STORYBOARDS=window.STORYBOARDS||{};   // doc id -> the storyboard PlotPointe made for that script, when it matches the script word for word   // one per script, from tools/make_folders.py: every script starts at step 1 on the day its folder was made
+const LIVE=window.LIVE&&!(window.LIVE.untilMs<=Date.now())?window.LIVE:null;   // {story, shots, url, api, until, untilMs} while a real Blender is being streamed, else null
+if(LIVE&&LIVE.untilMs)setTimeout(()=>location.reload(),LIVE.untilMs-Date.now()+1500);   // when the machine stops, go back to the pictures
+const liveShots=LIVE?(LIVE.shots||[LIVE.shot]):[];   // the shots that one live Blender can open
+const app=document.getElementById("app"),store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const h=(t,p={},...k)=>{const e=document.createElement(t);for(const[a,v]of Object.entries(p)){if(a==="on")for(const[n,f]of Object.entries(v))e.addEventListener(n,f);else if(a==="class")e.className=v;else e[a]=v}e.append(...k.filter(x=>x!=null));return e};
+
+// What the animator has done so far, kept in this browser only: which shot is open, and which shots have been generated.
+const NOT_BUILT="No scene has been built for this storyboard yet.";
+const key=st=>"pp_animate_"+st.id;
+const read=st=>{let w;try{w=JSON.parse(store.get(key(st)))||{}}catch(e){w={}}w.at=Math.min(Math.max(w.at|0,0),st.shots.length-1);w.shots=w.shots||{};return w};
+let S=STORIES[0],work=read(S);
+const save=()=>store.set(key(S),JSON.stringify(work));
+const shotWork=i=>work.shots[i]||(work.shots[i]={step:0});
+const ent=id=>S.entities.find(e=>e.id===id);
+// The three widgets around Blender. Each has a toggle; the choice is remembered in this browser.
+const UI=(()=>{const d={chat:true,shots:false,details:false};try{return Object.assign(d,JSON.parse(store.get("pp_animate_ui"))||{})}catch(e){return d}})();
+const flipUI=k=>{UI[k]=!UI[k];store.set("pp_animate_ui",JSON.stringify(UI));desk()};
+
+const nav=h("nav",{class:"nav",ariaLabel:"Menu"});document.body.append(nav);
+function navOn(here=0){                          // the sidebar IS the process: every item opens its stage
+  document.body.classList.add("nav-on");
+  nav.replaceChildren(h("div",{class:"brand"},h("button",{class:"home",title:"Scripts",ariaLabel:"PlotPointe home",on:{click:()=>showStage(0)}},h("i"),"PlotPointe")),
+    ...STAGES.map(([t],i)=>h("button",{class:i===here?"here":"",textContent:t,ariaCurrent:i===here?"page":null,on:{click:()=>showStage(i)}})));
+}
+function navOff(){document.body.classList.remove("nav-on")}
+
+// Talking to the live Blender (tools/live/pp_live.py). One question every two seconds tells the page everything:
+// which shot is open, the steps while a shot is opening, what was saved last, the chat, and the model's current step.
+let liveAsked=null;                                  // the shot Blender was last asked to open
+let liveState=null,liveDown=false;                   // Blender's last answer; true when it did not answer
+let opening=null;                                    // {shot, steps, step, since} while Blender is opening a shot: its own steps, by name
+const canChat=()=>!!(LIVE&&LIVE.api&&LIVE.story===S.id);
+const clock=sec=>new Date(sec*1000).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",hour12:false});
+function liveTag(){
+  const r=liveState,shot=liveAsked;
+  const say=liveDown?"cannot reach Blender":r&&r.error?"Blender said: "+r.error:opening?"opening "+opening.shot
+    :!r||!LIVE.api?"":r.last&&r.last.shot===shot?"saved "+clock(r.last.at)+" · copy "+r.count:r.count?"your saved copy "+r.count+" is open":"nothing changed yet";
+  return "Live Blender"+(LIVE.until?" · stops at "+LIVE.until:"")+(say?" · "+say:"");
+}
+const showTag=()=>{const t=document.querySelector(".livewin")&&document.querySelector(".tag");if(t)t.textContent=liveTag()};
+// The loading steps over the Blender window: every line is a step Blender itself reported, the running one has the moving bar.
+function showOpening(){
+  const stage=document.querySelector(".livewin")&&document.querySelector(".stage");if(!stage)return;
+  const old=stage.querySelector(".opening");
+  if(!opening){if(old)old.remove();return}
+  const steps=opening.steps.length?opening.steps:["Asking Blender for the "+opening.shot+" scene"];
+  const sig=opening.shot+"|"+steps.join("|")+"|"+opening.step,head="Opening the "+opening.shot+" scene · "+Math.round((Date.now()-opening.since)/1000)+" s";
+  if(old&&old.dataset.sig===sig){old.querySelector(".label").textContent=head;return}   // same step: only the seconds move
+  const el=h("div",{class:"opening"},h("div",{class:"card"},h("span",{class:"label",textContent:head}),
+    ...steps.map((t,n)=>h("div",{class:"job"+(n<opening.step?" done":n===opening.step?" now":"")},h("span",{textContent:t}),h("div",{class:"bar"},h("i"))))));
+  el.dataset.sig=sig;old?old.replaceWith(el):stage.append(el);
+}
+// The chat: what the animator wrote, what the model answered, and the step the model is on right now.
+function showChat(){
+  const log=document.querySelector(".chat-log");if(!log)return;
+  const r=liveState,msgs=r&&r.chat||[],busy=r&&r.model&&r.model.busy?r.model.step:"";
+  const sig=msgs.length+"|"+busy+"|"+liveDown+"|"+outbox.map(o=>o.state).join(",");
+  if(log.dataset.sig===sig)return;log.dataset.sig=sig;
+  const waiting=!busy&&!outbox.length&&msgs.length&&msgs[msgs.length-1].who==="you";
+  log.replaceChildren(...[...msgs.map(m=>h("div",{class:"msg "+(m.who==="you"?"you":"model"),textContent:m.text})),
+    ...outbox.map(o=>h("div",{class:"msg you pending"+(o.state==="failed"?" failed":"")},h("span",{textContent:o.text}),
+      o.state==="failed"?h("span",{class:"note"},"Not sent. The line to Blender is down. ",h("button",{class:"text",textContent:"Try again",on:{click:()=>{outbox.splice(outbox.indexOf(o),1);say(o.text)}}})):h("span",{class:"note",textContent:"Sending…"}))),
+    busy?h("div",{class:"job now"},h("span",{textContent:busy}),h("div",{class:"bar"},h("i")),
+      h("button",{class:"text",textContent:"Stop",on:{click:()=>say("Stop.")}})):null,
+    waiting?h("div",{class:"job now"},h("span",{textContent:"Sent. The model is picking it up"}),h("div",{class:"bar"},h("i"))):null,   // so the animator sees at once that the line arrived
+    liveDown?h("div",{class:"msg model",textContent:"Cannot reach Blender."}):null].filter(Boolean));
+  log.scrollTop=log.scrollHeight;
+}
+function heard(r){
+  liveState=r;liveDown=false;
+  if(liveAsked){
+    if(r.error)opening=null;
+    else if(r.shot!==liveAsked||r.opening){const mine=r.opening===liveAsked;   // not on screen yet: show Blender's own steps
+      opening={shot:liveAsked,steps:mine?r.steps:[],step:mine?r.step:0,since:opening?opening.since:Date.now()}}
+    else opening=null}
+  showTag();showOpening();showChat();
+}
+const lost=()=>{liveDown=true;opening=null;showTag();showOpening();showChat()};
+const wire=(path,opt={},ms=7000)=>{const stop=new AbortController(),t=setTimeout(()=>stop.abort(),ms);   // gives up after ms: a dead line must show, not hang
+  return fetch(LIVE.api+path,{...opt,signal:stop.signal}).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).finally(()=>clearTimeout(t))};
+const poll=()=>wire("/status").then(heard).catch(lost);
+function openLive(shot){
+  if(!LIVE.api||liveAsked===shot)return;
+  liveAsked=shot;opening={shot,steps:[],step:0,since:Date.now()};showTag();showOpening();
+  wire("/open?shot="+encodeURIComponent(shot)).then(heard).catch(lost);
+}
+// The instant buttons: each one is a ready-made tool inside the live Blender (tools/live/pp_live.py), no AI in between.
+const TOOLBAR=[["Face","face",{}],["Full shot","camera_view",{}],["Bones","bones",{show:"toggle"}],["Play","play",{on:"toggle"}],["Undo","undo",{}]];
+function tool(name,args){
+  wire("/tool?name="+name,{method:"POST",body:JSON.stringify(args)}).then(poll).catch(lost);
+}
+// What the animator typed shows in the chat at once, marked "sending". It leaves this list when Blender has it
+// (the real line then comes back from Blender), or turns into "not sent" with a button to try again.
+const outbox=[];
+function say(text){
+  const mine={text,state:"sending",shot:S.shots[work.at].short||""};outbox.push(mine);showChat();
+  wire("/say?shot="+encodeURIComponent(mine.shot),{method:"POST",body:text},9000)
+    .then(()=>poll().finally(()=>{outbox.splice(outbox.indexOf(mine),1);showChat()}))   // Blender has it: its own copy of the line is now in the chat
+    .catch(()=>{mine.state="failed";showChat()});
+}
+if(LIVE&&LIVE.api){
+  const loop=()=>{if(document.querySelector(".desk")&&canChat())poll();setTimeout(loop,opening?300:2000)};loop();
+  setInterval(()=>{if(opening)showOpening()},1000);   // the seconds on the loading steps
+}
+
+// What is on show in the Blender area for the open shot.
+let unfolded=null;                               // which cast member's description is unfolded
+let more=false;                                  // whether the full picture description is shown
+let at=0;                                        // which of the built scene's pictures is on show (0, 1, 2)
+let board=false;                                 // true while comparing with the storyboard
+let playing=false,tick=0;                        // stepping through the pictures on a timer
+let draft="";                                    // what is typed in the chat line and not sent yet
+const fresh=()=>{unfolded=null;more=false;at=0;board=false;playing=false};
+
+// The process, in order: the seven checkpoints (Nick, 13 Nov: "idea, script, storyboard, preview (animate), sfx, captions, publish").
+// Every script is one folder in Drive and goes through all seven.
+const FLOW=[["Idea",["Waiting for approval","Approved"]],["Script",["Waiting for edit and approval","Approved"]],["Storyboard",["Not started","Written","Approved"]],
+  ["Preview",["Not started","In Blender","Preview ready"]],["SFX",["Not started","Added","Approved"]],["Captions",["Not started","Added","Approved"]],["Publish",["Not published","Published"]]];
+const N=FLOW.length,ALL=[...FLOW.keys()];
+const STAGES=[["Ideas","Every script starts as an idea. Write one and approve it, and it moves on to Scripts."],
+  ["Scripts","The script is written from the approved idea. Edit and approve it here, and it moves on to Storyboard."],
+  ["Storyboard","The storyboard is drawn for each approved script. Approve it and the script moves on to Preview."],
+  ["Preview","Approved storyboards become a moving preview in Blender, one shot at a time."],
+  ["SFX","Sound effects and music under the preview. Approve them and the script moves on to Captions."],
+  ["Captions","The words on screen, timed to the narration. Approve them and the script moves on to Publish."],
+  ["Publish","The finished video, ready to upload. Uploading is done by hand."]];
+const EMPTY=["There are no ideas yet.","No idea is approved yet. Approve one in Ideas and it appears here.","No script is approved yet. Approve one in Scripts and it appears here.",
+  "No storyboard is approved yet. Approve one in Storyboard and it appears here.","No preview is ready yet. Finish one in Preview and it appears here.",
+  "No sound is approved yet. Approve it in SFX and it appears here.","No captions are approved yet. Approve them in Captions and it appears here."];
+// Where each later step keeps its files in the script's Drive folder.
+const STEP_DIRS={2:["02 Storyboard"],3:["03 Blend","04 Clips and final video"],4:["05 Sound"],5:["06 Captions"],6:["07 Publish"]};
+let FILES={};                                        // what the page's server found in each script's step folders
+const fileUrl=(sc,dir,name)=>"api/file?folder="+encodeURIComponent(sc.folder)+"&step="+encodeURIComponent(dir)+"&name="+encodeURIComponent(name);
+const drivePics=sc=>((FILES[sc.folder]||{})["02 Storyboard"]||[]).filter(f=>/\.(jpe?g|png|webp)$/i.test(f)).map(f=>fileUrl(sc,"02 Storyboard",f));
+const sKey=sc=>"pp_script_"+sc.folder;
+// One script's work: at/on = how far each step has got and the day; html/text = the script as edited; log = every change; sessions = stretches of work.
+// A record from before Idea, SFX and Captions were steps had four: script, storyboard, animate, publish. Its idea counts as approved.
+const OLD=[1,2,3,6];
+const upgrade=w=>{if(w&&Array.isArray(w.at)&&w.at.length===4){const move=(a,fill)=>{const b=Array(N).fill(fill);OLD.forEach((k,i)=>b[k]=a&&a[i]!=null?a[i]:fill);return b};
+  w.at=move(w.at,0);w.at[0]=1;w.on=move(w.on,null);if(w.re)w.re=move(w.re,null)}return w};
+const sRead=sc=>{let w;try{w=upgrade(JSON.parse(store.get(sKey(sc))))}catch(e){}
+  if(!(w&&Array.isArray(w.at)&&w.at.length===N)){w={at:Array(N).fill(0),on:Array(N).fill(null)};if(sc.made!=="platform")w.at[0]=1}   // scripts from the writers' docs came with their idea
+  w.log=w.log||[];w.sessions=w.sessions||[];return w};
+// Saving: always in this browser; and, when the page's own server answers (tools/serve.py), to PlotPointe's copy and the script's Drive folder.
+let remote=false,view=null,savedAt=0;                // view = how to redraw the screen that is showing
+const push=(sc,w)=>{if(!remote)return;
+  fetch("api/save?folder="+encodeURIComponent(sc.folder),{method:"POST",keepalive:true,body:JSON.stringify({state:w,text:w.text||sc.lines})})
+    .then(r=>{if(r.ok){savedAt=Date.now();const el=document.querySelector(".savedat");if(el)el.textContent=savedLine()}}).catch(()=>{})};
+const sSave=(sc,w)=>{store.set(sKey(sc),JSON.stringify(w));push(sc,w)};
+const savedLine=()=>!remote?"Kept in this browser only: the page's server is not running.":savedAt?"Saved to this script's Drive folder at "+clock(savedAt/1000):"Every change is saved to this script's Drive folder.";
+// A work session opens at the first change, and closes after 5 minutes without one; the next change opens a new session.
+const IDLE=5*60*1000;
+function note(w,what,line,before,after,who="you"){
+  const now=Date.now(),last=w.sessions[w.sessions.length-1];
+  if(last&&now-last.end<=IDLE){last.end=now;last.changes++}else w.sessions.push({start:now,end:now,changes:1});
+  w.log.push({at:now,who,what,line,before,after});
+}
+// What differs between two versions of the script: the first changed line, and the changed stretch before and after. null = nothing.
+function span(prev,cur){
+  let a=0,b=0;
+  while(a<prev.length&&a<cur.length&&prev[a]===cur[a])a++;
+  while(b<prev.length-a&&b<cur.length-a&&prev[prev.length-1-b]===cur[cur.length-1-b])b++;
+  return a===prev.length&&a===cur.length?null:{line:a+1,before:prev.slice(a,prev.length-b).join("\n"),after:cur.slice(a,cur.length-b).join("\n")};
+}
+// The marks, with the meanings PlotPointe already gives them in the writers' docs (telegram/gdocs.py).
+const MARKS=[["Cut","strikeThrough",null,"Strike out what should go"],["My words","bold",null,"Words you wrote yourself"],
+  ["Fluff","hiliteColor","rgb(255, 191, 102)","Filler that adds nothing"],["Flow","hiliteColor","rgb(158, 196, 255)","Does not flow from the line before"],
+  ["Sense","hiliteColor","rgb(255, 153, 153)","Does not make sense"],["Keep","hiliteColor","rgb(153, 230, 153)","Good, keep it"]];
+const TINT=Object.fromEntries(MARKS.filter(m=>m[2]).map(m=>[m[2],m[0].toLowerCase()]));
+const esc=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const toHtml=lines=>lines.map(l=>"<p>"+esc(l).replace(/~~(.+?)~~/g,"<strike>$1</strike>").replace(/\*\*(.+?)\*\*/g,"<b>$1</b>")
+  .replace(/\[(fluff|flow|sense|keep): (.+?)\]/g,(m,k,t)=>'<span style="background-color: '+MARKS.find(x=>x[0].toLowerCase()===k)[2]+'">'+t+"</span>")+"</p>").join("");
+function marked(node){                               // a line's text with its marks written out: ~~cut~~, **my words**, [fluff: ...]
+  if(node.nodeType===3)return node.nodeValue;
+  if(node.nodeType!==1)return "";
+  const inner=[...node.childNodes].map(marked).join("");
+  if(!inner.trim())return inner;
+  const st=node.style||{},tint=TINT[st.backgroundColor];
+  if(/^(STRIKE|S|DEL)$/.test(node.tagName)||/line-through/.test(st.textDecorationLine||st.textDecoration||""))return "~~"+inner+"~~";
+  if(/^(B|STRONG)$/.test(node.tagName)||/^(bold|[6-9]00)$/.test(st.fontWeight||""))return "**"+inner+"**";
+  return tint?"["+tint+": "+inner+"]":inner;
+}
+const boxLines=box=>(box.children.length?[...box.children].map(marked):box.textContent.split("\n")).map(l=>l.replace(/ /g," ").trim()).filter(Boolean);
+let leaveEdit=null;                                  // closes the change being typed, when the animator leaves the script
+
+const sDone=(w,n)=>w.at[n]>=FLOW[n][1].length-1;
+const sNow=w=>{const n=ALL.find(i=>!sDone(w,i));return n===undefined?N-1:n};   // the first step that is not finished
+
+// One stage of the process: the scripts that have reached it, each with where it stands in this stage.
+function showStage(n){
+  if(leaveEdit)leaveEdit();
+  clearTimeout(tick);navOn(n);fresh();view=()=>showStage(n);
+  const reached=SCRIPTS.filter(sc=>{const w=sRead(sc);return n===0||sDone(w,n-1)||w.at[n]>0});   // a script stays on a stage it has started, even if an earlier step is reopened
+  const row=sc=>{
+    const w=sRead(sc);
+    return h("button",{class:"row script",on:{click:()=>scriptPage(sc)}},h("b",{textContent:sc.title}),
+      h("em",{textContent:FLOW[n][0]+" · "+FLOW[n][1][w.at[n]]}),
+      h("div",{class:"track"},...ALL.map(i=>h("i",{class:sDone(w,i)?"done":""}))))};
+  const demo=st=>{
+    const built=st.shots.filter(x=>x.built).length;
+    return h("button",{class:"row demo",on:{click:()=>{S=st;work=read(st);desk()}}},h("b",{textContent:st.title}),
+      st.demo?h("em",{textContent:"Demo · "+built+" scenes built"}):null,
+      h("span",{textContent:st.shots.length+" shots"+(st.seconds?", "+st.seconds+" seconds":"")+". Open the shots"}))};
+  app.replaceChildren(h("div",{class:"screen wide"},h("h1",{textContent:STAGES[n][0]}),
+    h("p",{textContent:STAGES[n][1]}),
+    n<2?h("button",{class:"go newbtn",textContent:n===0?"New idea":"New script",disabled:!remote,title:remote?"Write a new idea here":"Needs the page's server",on:{click:newScript}}):null,
+    reached.length?h("div",{class:"rows scripts"},...reached.map(row)):h("p",{class:"empty",textContent:EMPTY[n]}),
+    ...(n===3?[h("div",{class:"label",style:"margin-top:40px",textContent:"Earlier demos"}),h("div",{class:"rows demos"},...STORIES.map(demo))]:[])));
+  window.scrollTo(0,0);
+}
+const list=()=>showStage(0);
+
+// A new idea, written in the platform: a title, the idea, and the script if it is written already. The page's server makes its Drive folder and record.
+function newScript(){
+  if(leaveEdit)leaveEdit();
+  navOn(0);view=newScript;
+  const title=h("input",{class:"newtitle",type:"text",placeholder:"The title",ariaLabel:"Title",maxLength:120});
+  const idea=h("textarea",{class:"newtext newidea",rows:3,placeholder:"The idea: the story in a sentence or two",ariaLabel:"The idea"});
+  const text=h("textarea",{class:"newtext",rows:8,placeholder:"The script, one line per line, as it will be spoken. Leave it empty to write it once the idea is approved.",ariaLabel:"The script"});
+  const err=h("div",{class:"state err"});
+  const make=h("button",{class:"go",textContent:"Create",on:{click:()=>{
+    const lines=text.value.split("\n").map(l=>l.trim()).filter(Boolean);
+    if(!title.value.trim()){err.textContent="Give the script a title.";return}
+    if(!idea.value.trim()&&!lines.length){err.textContent="Write the idea.";return}
+    make.disabled=true;err.textContent="Making its folder in Drive...";
+    fetch("api/new",{method:"POST",body:JSON.stringify({title:title.value,idea:idea.value,lines})}).then(r=>r.json()).then(r=>{
+      if(!r.script){make.disabled=false;err.textContent=r.error?r.error[0].toUpperCase()+r.error.slice(1)+".":"That did not work.";return}
+      SCRIPTS.push(r.script);SCRIPTS.sort((a,b)=>a.title.toLowerCase()<b.title.toLowerCase()?-1:1);
+      store.set(sKey(r.script),JSON.stringify(r.state));scriptPage(r.script)})
+    .catch(()=>{make.disabled=false;err.textContent="Cannot reach the page's server."})}}});
+  app.replaceChildren(h("div",{class:"screen wide"},
+    h("button",{class:"text",textContent:"← Ideas",on:{click:()=>showStage(0)}}),
+    h("h1",{textContent:"New idea"}),
+    h("p",{textContent:"Write it here or paste it in. It gets its own folder in Drive, and every change from now on is recorded."}),
+    title,idea,text,err,make));
+  title.focus();
+}
+
+// One script: its seven steps, the day each was done, and the folder it lives in.
+function scriptPage(sc){
+  if(leaveEdit)leaveEdit();
+  const w=sRead(sc);navOn(sNow(w));view=()=>scriptPage(sc);
+  const save=()=>{sSave(sc,w);scriptPage(sc)};
+  const when=()=>new Date().toISOString().slice(0,10);
+  const ACTION=[["Approve idea"],["Approve script"],["Mark storyboard written","Approve storyboard"],["Start the preview","Mark preview ready"],
+    ["Mark sound added","Approve sound"],["Mark captions added","Approve captions"],["Mark published"]];
+  const advance=n=>{note(w,ACTION[n][w.at[n]],null,"","");w.at[n]++;w.on[n]=when();save()};
+  const reopen=n=>{note(w,"Reopen "+FLOW[n][0].toLowerCase(),null,"","");w.at[n]=Math.max(0,FLOW[n][1].length-2);w.on[n]=when();w.re=w.re||Array(N).fill(null);w.re[n]=when();save()};   // approval never locks: back to editing, and the day is kept
+
+  // The script itself: an editable box. Every change is recorded with its time, what it was before and what it is now.
+  const editable=!sDone(w,1);
+  const box=h("div",{class:"scriptbox",contentEditable:String(editable),spellcheck:true,ariaLabel:"The script",innerHTML:w.html||toHtml(sc.lines||[])||"<p><br></p>"});
+  // The idea: written in the platform for a new script; the scripts from the writers' docs came with theirs.
+  const ideaText=w.idea!=null?w.idea:sc.idea||"";
+  const ideaBox=h("textarea",{class:"newtext ideabox",rows:3,value:ideaText,disabled:sDone(w,0),ariaLabel:"The idea",placeholder:sDone(w,0)?"Reopen the idea to change it":"The idea: the story in a sentence or two"});
+  ideaBox.addEventListener("change",()=>{const after=ideaBox.value.trim();if(after===ideaText)return;note(w,"Idea edit",null,ideaText,after);w.idea=after;save()});
+  // What is in this step's folder in Drive, by name.
+  const inDrive=n=>(STEP_DIRS[n]||[]).filter(d=>n!==2||!STORYBOARDS[sc.doc]).map(d=>{const got=(FILES[sc.folder]||{})[d]||[];
+    return h("div",{class:"state drivefiles"},d+" in Drive: "+(got.length?got.length+(got.length===1?" file · ":" files · ")+got.slice(0,4).join(", ")+(got.length>4?" ...":""):remote?"empty":"(needs the page's server)"))});
+  const changes=h("div",{class:"changes"});
+  const showChanges=()=>changes.replaceChildren(
+    h("span",{class:"label",textContent:w.log.length?w.log.length+(w.log.length===1?" change · ":" changes · ")+w.sessions.length+(w.sessions.length===1?" work session":" work sessions"):"No changes yet. Everything you change here is recorded."}),
+    ...w.sessions.slice(-2).reverse().map((x,i)=>h("div",{class:"fact",textContent:"Session "+(w.sessions.length-i)+" · "+clock(x.start/1000)+" to "+clock(x.end/1000)+" · "+x.changes+(x.changes===1?" change":" changes")})),
+    ...w.log.slice(-5).reverse().map(c=>h("div",{class:"fact change"},h("span",{class:"label",textContent:clock(c.at/1000)+" · "+(c.who&&c.who!=="you"?c.who+" · ":"")+c.what+(c.line?" · line "+c.line:"")}),
+      c.before?h("s",{textContent:c.before}):null,c.after?h("span",{textContent:c.after}):null)));
+  let prev=boxLines(box),timer=0,lastMark="";
+  const close=()=>{                                  // one change: what differs from the last recorded text
+    clearTimeout(timer);timer=0;
+    const cur=boxLines(box),ch=span(prev,cur);
+    if(!ch){lastMark="";return}
+    note(w,lastMark||"Edit",ch.line,ch.before,ch.after);
+    w.mine=[...new Set([...(w.mine||[]),...ch.after.split("\n").filter(Boolean)])].filter(l=>cur.includes(l));   // the lines the writer edited: never changed without their click
+    lastMark="";prev=cur;w.html=box.innerHTML;w.text=cur;sSave(sc,w);showChanges();
+  };
+  box.addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(close,2000)});   // a pause of two seconds closes one change
+  leaveEdit=()=>{leaveEdit=null;if(timer)close()};
+  const mark=([name,cmd,arg,tip])=>h("button",{class:"tog",title:tip,on:{mousedown:e=>e.preventDefault(),click:()=>{
+      lastMark=name;document.execCommand("styleWithCSS",false,false);document.execCommand(cmd,false,arg);box.dispatchEvent(new Event("input"))}}},
+    arg?h("i",{style:"background:"+arg}):null,name);
+  const clear=h("button",{class:"tog",textContent:"Clear",title:"Take the marks off the selected words",on:{mousedown:e=>e.preventDefault(),click:()=>{
+    lastMark="Clear";document.execCommand("removeFormat");document.execCommand("hiliteColor",false,"transparent");box.dispatchEvent(new Event("input"))}}});
+  showChanges();
+
+  // The chat: tell PlotPointe what to change. It edits the script in the box, says what it did, and every edit can be undone.
+  w.chat=w.chat||[];
+  const thread=h("div",{class:"talk"});
+  let asking=false;
+  const setLines=lines=>{box.innerHTML=toHtml(lines);prev=boxLines(box);w.html=box.innerHTML;w.text=prev};
+  const showTalk=()=>thread.replaceChildren(...[...w.chat.map((m,i)=>m.who==="you"?h("div",{class:"msg you",textContent:m.text})
+      :h("div",{class:"msg model"},h("span",{textContent:m.text}),
+        m.change?h("div",{class:"fact change"},m.change.before?h("s",{textContent:m.change.before}):null,m.change.after?h("span",{textContent:m.change.after}):null):null,
+        m.suggest&&!m.applied?h("span",{class:"label",textContent:"This changes your own edit, so it is only a suggestion"}):null,
+        m.suggest&&!m.applied&&editable?h("button",{class:"text",textContent:"Apply",on:{click:()=>apply(i)}}):null,
+        m.undone?h("span",{class:"label",textContent:"Undone"}):m.change&&(!m.suggest||m.applied)&&editable?h("button",{class:"text",textContent:"Undo",on:{click:()=>undo(i)}}):null)),
+    asking?h("div",{class:"job now"},h("span",{textContent:"PlotPointe is working on your script"}),h("div",{class:"bar"},h("i"))):null].filter(Boolean));
+  const undo=i=>{                                    // put back the script as it was before that chat edit
+    if(timer)close();
+    const m=w.chat[i],cur=boxLines(box),ch=span(cur,m.was);
+    setLines(m.was);note(w,"Undo",ch?ch.line:null,ch?ch.before:"",ch?ch.after:"");m.undone=true;sSave(sc,w);showTalk();showChanges();
+  };
+  const apply=i=>{                                   // the writer's click: only now does a suggestion that touches their edit go in
+    if(timer)close();
+    const m=w.chat[i];
+    if(JSON.stringify(boxLines(box))!==JSON.stringify(m.was)){w.chat.push({who:"PlotPointe",text:"The script changed since that suggestion. Ask me again.",at:Date.now()});sSave(sc,w);showTalk();return}
+    setLines(m.proposed);note(w,"Chat edit (applied by you)",m.change.line,m.change.before,m.change.after,"PlotPointe");m.applied=true;sSave(sc,w);showTalk();showChanges();
+  };
+  const canTalk=remote&&editable;
+  const say=h("textarea",{rows:1,disabled:!canTalk,ariaLabel:"Message PlotPointe",placeholder:!editable?"Reopen the script to change it":remote?"Tell PlotPointe what to change":"The chat needs the page's server"});
+  const sendBtn=h("button",{class:"arrow",textContent:"↑",ariaLabel:"Send",disabled:true});
+  const sendChat=()=>{
+    const text=say.value.trim();if(!text||!canTalk||asking)return;
+    if(timer)close();
+    const before=boxLines(box);
+    w.chat.push({who:"you",text,at:Date.now()});asking=true;say.value="";sendBtn.disabled=true;box.contentEditable="false";showTalk();sSave(sc,w);
+    const done=()=>{asking=false;sSave(sc,w);if(!box.isConnected){if(view)view();return}box.contentEditable="true";showTalk();showChanges()};
+    const mine=(w.mine||[]).filter(l=>before.includes(l));
+    fetch("api/chat?folder="+encodeURIComponent(sc.folder),{method:"POST",body:JSON.stringify({text,lines:before,mine,history:w.chat.slice(-7,-1).map(m=>({who:m.who,text:m.text}))})})
+      .then(r=>r.json()).then(r=>{
+        if(r.error||typeof r.say!=="string")w.chat.push({who:"PlotPointe",text:"I could not do that: "+(r.error||"no answer")+".",at:Date.now()});
+        else{
+          const ch=Array.isArray(r.lines)?span(before,r.lines):null;
+          const touches=ch&&mine.some(l=>!r.lines.includes(l));               // it would change a line the writer edited ("never change my edits")
+          if(ch&&!touches){setLines(r.lines);note(w,"Chat edit",ch.line,ch.before,ch.after,"PlotPointe")}
+          w.chat.push({who:"PlotPointe",text:r.say,at:Date.now(),change:ch,was:ch?before:null,suggest:!!touches,proposed:touches?r.lines:null})}
+        done()})
+      .catch(()=>{w.chat.push({who:"PlotPointe",text:"I could not reach the model. Try again.",at:Date.now()});done()});
+  };
+  say.addEventListener("input",()=>{sendBtn.disabled=!say.value.trim()||asking;say.style.height="auto";say.style.height=say.scrollHeight+"px"});
+  say.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendChat()}});
+  sendBtn.addEventListener("click",sendChat);
+  showTalk();
+
+  const step=n=>{
+    const earlierOpen=ALL.filter(i=>i<n&&!sDone(w,i));                  // an earlier step is not finished (never done, or reopened)
+    const blocked=earlierOpen.length>0&&w.at[n]===0,state=FLOW[n][1][w.at[n]],act=ACTION[n][w.at[n]];
+    const recheck=earlierOpen.length>0&&w.at[n]>0;                          // this step had work, then an earlier step was reopened
+    return h("div",{class:"stepbox"+(sDone(w,n)?" done":"")+(blocked?" wait":"")},
+      h("span",{class:"label",textContent:"Step "+(n+1)}),h("b",{class:"name",textContent:FLOW[n][0]}),
+      h("div",{class:"state",textContent:blocked?"Starts when step "+n+" is done":state+(w.on[n]?" · "+w.on[n]:"")}),
+      recheck?h("div",{class:"state",textContent:FLOW[earlierOpen[0]][0]+" was reopened. Check this still fits once it is approved again."}):null,
+      ...(n===0?(ideaText||sc.made==="platform"?[ideaBox]:[h("div",{class:"state",textContent:"This script came from the writers' Google Doc, with its idea already written."})]):[]),
+      ...(n===1&&!blocked?[!(sc.lines||[]).length&&!(w.text||[]).length?h("div",{class:"state",textContent:"Write the script in the box, one line per line, as it will be spoken."}):null,
+        editable?h("div",{class:"marks"},...MARKS.map(mark),clear):null,box,h("div",{class:"label savedat",textContent:savedLine()}),thread,h("div",{class:"input"},say,sendBtn),changes]:[]),
+      ...(n>=2?inDrive(n):[]),
+      ...(n===2?(STORYBOARDS[sc.doc]?[h("button",{class:"sbstrip",title:"Open the storyboard",on:{click:()=>storyboardPage(sc)}},
+            ...STORYBOARDS[sc.doc].shots.slice(0,8).map(x=>h("img",{src:x.image,alt:"Shot "+x.n,loading:"lazy"}))),
+          h("button",{class:"text sbopen",textContent:"Open the storyboard · "+STORYBOARDS[sc.doc].shots.length+" shots",on:{click:()=>storyboardPage(sc)}})]
+        :drivePics(sc).length?[h("div",{class:"sbstrip"},...drivePics(sc).slice(0,8).map(u=>h("a",{href:u,target:"_blank"},h("img",{src:u,alt:"",loading:"lazy"}))))]
+        :[h("div",{class:"state",textContent:"No storyboard yet. Put its pictures in this script's 02 Storyboard folder in Drive, in shot order, and they show here. PlotPointe's storyboard maker can also draw one; its pictures use image credits, so that waits for your go."})]):[]),
+      !blocked&&!recheck&&act?h("button",{class:"go",textContent:act,on:{click:()=>{if(leaveEdit)leaveEdit();advance(n)}}}):null,
+      sDone(w,n)&&n<N-1?h("button",{class:"text reopen",textContent:n<2?"Reopen to edit":"Reopen",on:{click:()=>reopen(n)}}):null)};
+  app.replaceChildren(h("div",{class:"screen wide"},
+    h("button",{class:"text",textContent:"← "+STAGES[sNow(w)][0],on:{click:()=>showStage(sNow(w))}}),
+    h("h1",{textContent:sc.title}),
+    h("p",{textContent:"Drive: Art Of War Productions / "+sc.folder}),
+    h("div",{class:"steps"},...ALL.map(step)),
+    h("div",{class:"label",style:"margin-top:36px",textContent:"Tracking started "+sc.started+". "+sc.source+"."})));
+  window.scrollTo(0,0);
+}
+// The storyboard of one script: every shot with its picture, the words it plays under and who is in it. Notes on a shot are
+// recorded like script changes, and the whole storyboard is kept in the script's Drive folder (02 Storyboard).
+function storyboardPage(sc,open=null){
+  if(leaveEdit)leaveEdit();
+  const sb=STORYBOARDS[sc.doc];if(!sb)return scriptPage(sc);
+  const w=sRead(sc);w.sb=w.sb||{notes:{}};navOn(2);view=()=>storyboardPage(sc,open);
+  const save=()=>{sSave(sc,w);storyboardPage(sc,open)};
+  const when=()=>new Date().toISOString().slice(0,10);
+  const scriptOk=sDone(w,1),state=FLOW[2][1][w.at[2]];
+  const act=!scriptOk?null:w.at[2]===0?"Mark storyboard written":w.at[2]===1?"Approve storyboard":null;
+  const cast=Object.fromEntries(sb.cast.map(c=>[c.id,c]));
+  const card=x=>h("button",{class:"shot"+(open===x.n?" on":""),on:{click:()=>storyboardPage(sc,open===x.n?null:x.n)}},
+    h("img",{src:x.image,alt:"Shot "+x.n,loading:"lazy"}),
+    h("span",{class:"label",textContent:"Shot "+x.n+(w.sb.notes[x.n]?" · note":"")}),h("span",{class:"words",textContent:x.words}));
+  const detail=n=>{
+    const x=sb.shots[n-1];
+    const noteBox=h("textarea",{rows:2,value:w.sb.notes[n]||"",disabled:sDone(w,2),placeholder:sDone(w,2)?"Reopen the storyboard to add notes":"What should change in this shot?",ariaLabel:"Note on shot "+n});
+    noteBox.addEventListener("change",()=>{const before=w.sb.notes[n]||"",after=noteBox.value.trim();if(before===after)return;
+      if(after)w.sb.notes[n]=after;else delete w.sb.notes[n];note(w,"Storyboard note · shot "+n,null,before,after);save()});
+    return h("div",{class:"shotdetail"},h("img",{src:x.image,alt:"Shot "+n}),
+      h("div",{class:"shotinfo"},h("span",{class:"label",textContent:"Shot "+n+" of "+sb.shots.length}),h("div",{class:"words big",textContent:x.words}),
+        h("span",{class:"label",style:"margin-top:14px",textContent:"In this shot"}),
+        h("div",{class:"castrow"},...x.cast.map(id=>cast[id]).filter(Boolean).map(c=>h("span",{class:"who"},c.image?h("img",{src:c.image,alt:""}):h("i"),h("span",{textContent:c.name})))),
+        h("span",{class:"label",style:"margin-top:14px",textContent:"What the picture was asked for"}),h("div",{class:"prompt",textContent:x.prompt}),
+        h("span",{class:"label",style:"margin-top:14px",textContent:"Your note"}),noteBox,
+        h("div",{class:"state",textContent:"A new picture for this shot uses image credits, so it waits for your go."})));
+  };
+  const grid=h("div",{class:"shotgrid"},...sb.shots.map(card));
+  if(open)grid.insertBefore(detail(open),grid.children[Math.min(sb.shots.length,Math.ceil(open/4)*4)]||null);
+  const again=document.querySelector(".sbscreen")&&document.querySelector(".sbscreen").dataset.doc===sc.doc;   // same storyboard: no fade-in again
+  app.replaceChildren(h("div",{class:"screen wide sbscreen",style:again?"animation:none":""},
+    h("button",{class:"text",textContent:"← "+sc.title,on:{click:()=>scriptPage(sc)}}),
+    h("h1",{textContent:sc.title}),
+    h("p",{textContent:"Storyboard · "+sb.shots.length+" shots · about "+sb.seconds+" seconds · "+sb.cast.length+" people, ships and places. Click a shot to see it and leave a note."}),
+    h("div",{class:"stepbox"+(sDone(w,2)?" done":"")},h("span",{class:"label",textContent:"Step 3"}),h("b",{class:"name",textContent:"Storyboard"}),
+      h("div",{class:"state",textContent:!scriptOk?"Starts when the script is approved":state+(w.on[2]?" · "+w.on[2]:"")}),
+      act?h("button",{class:"go",textContent:act,on:{click:()=>{note(w,act,null,"","");w.at[2]++;w.on[2]=when();save()}}}):null,
+      sDone(w,2)?h("button",{class:"text reopen",textContent:"Reopen",on:{click:()=>{note(w,"Reopen storyboard",null,"","");w.at[2]=1;w.on[2]=when();save()}}}):null),
+    h("div",{class:"label",style:"margin-top:26px",textContent:"Cast"}),
+    h("div",{class:"castrow"},...sb.cast.map(c=>h("span",{class:"who",title:c.look},c.image?h("img",{src:c.image,alt:""}):h("i"),h("span",{textContent:c.name})))),
+    h("div",{class:"label",style:"margin-top:26px",textContent:"Shots"}),grid));
+  app.firstChild.dataset.doc=sc.doc;
+  if(!open)window.scrollTo(0,0);
+}
+
+window.addEventListener("beforeunload",()=>{if(leaveEdit)leaveEdit()});
+
+// Screen 2: one shot. The chat on the left, Blender in the middle (the large part), and two widgets that start
+// minimised: the shots along the bottom and the scene details on the right. It starts empty: one button, Generate scene.
+function desk(){
+  if(leaveEdit)leaveEdit();view=null;
+  clearTimeout(tick);navOff();
+  const i=work.at,s=S.shots[i],w=shotWork(i),built=s.built;
+  w.step=built&&w.step>0?1:0;                    // a shot is either not started or generated
+  const step=w.step,live=!!built&&step>0;        // live = the built scene is on show
+  const pics=built?built.pictures:[];
+  const goTo=n=>{work.at=n;fresh();save();desk()};
+  const setStep=n=>{w.step=n;fresh();save();desk()};
+  const home=()=>h("button",{class:"home",title:"Back to Preview",ariaLabel:"Back to Preview",on:{click:()=>showStage(3)}},h("i"),"PlotPointe");
+  const flip=(t,on,f)=>h("button",{class:"text"+(on?" on":""),textContent:t,on:{click:f}});
+  const stream=live&&LIVE&&LIVE.story===S.id&&liveShots.includes(s.short);    // this shot opens in the real Blender
+  const streamKey=stream?S.id:"";                                             // one Blender for the whole storyboard
+
+  // Blender's place. Not started: empty, one button. Generated: the real Blender when it is live, else pictures of the built scene.
+  let body;
+  if(!live)body=h("div",{class:"start"},
+    h("button",{class:"go",textContent:"Generate scene",disabled:!built,on:{click:()=>setStep(1)}}),
+    built?null:h("span",{class:"text",textContent:NOT_BUILT}));
+  else if(stream)body=h("iframe",{class:"livewin",src:LIVE.url,title:"Blender, live",allow:"clipboard-read; clipboard-write; fullscreen"});
+  else{
+    const pic=board?s.image:pics[at],span=built.frames[1]-built.frames[0];
+    const frame=h("div",{class:"frame live",style:"aspect-ratio:"+pic.w+"/"+pic.h},
+      h("img",{src:pic.src,alt:board?"Storyboard for shot "+(i+1):"The built scene, frame "+pics[at].frame}));
+    const time=h("div",{class:"b-time live",title:"Click to move along the shot",on:{click:e=>{
+        if(e.target.closest("button"))return;
+        const r=e.currentTarget.querySelector(".ticks").getBoundingClientRect(),f=built.frames[0]+Math.min(Math.max((e.clientX-r.left)/r.width,0),1)*span;
+        at=pics.reduce((b,p,n)=>Math.abs(p.frame-f)<Math.abs(pics[b].frame-f)?n:b,0);board=false;playing=false;desk()}}},
+      h("div",{class:"ends"},h("span",{class:"label",textContent:"Timeline · frame "+pics[at].frame+" of "+built.frames[1]}),
+        flip(playing?"Pause":"Play",playing,()=>{playing=!playing;board=false;desk()})),
+      h("div",{class:"ticks"}),
+      ...pics.map(p=>h("i",{class:"mark",style:"left:calc(14px + (100% - 28px) * "+(p.frame-built.frames[0])/span+")"})),
+      h("i",{class:"head",style:"left:calc(14px + (100% - 28px) * "+(pics[at].frame-built.frames[0])/span+")"}));
+    body=h("div",{class:"blender"},
+      h("div",{class:"b-top label"},h("b",{textContent:"Blender"}),..."File Edit Render Window Help".split(" ").map(t=>h("span",{textContent:t})),
+        h("span",{class:"file",textContent:built.file})),
+      h("div",{class:"b-view"},h("span",{class:"label",textContent:board?"Storyboard":"3D view · camera · frame "+pics[at].frame}),
+        h("div",{class:"switch"},flip("Scene",!board,()=>{board=false;desk()}),flip("Storyboard",board,()=>{board=true;playing=false;desk()})),
+        frame),
+      h("div",{class:"b-props"},h("span",{class:"label",textContent:"Properties"}),...[70,45,60,35,55].map(n=>h("i",{style:"width:"+n+"%"}))),
+      time);
+  }
+  const stage=h("div",{class:"stage"},body);
+
+  // The top line: where you are, the live status, and the three toggles.
+  const tog=(k,t)=>h("button",{class:"tog"+(UI[k]?" on":""),textContent:t,ariaPressed:String(UI[k]),title:(UI[k]?"Hide the ":"Show the ")+t.toLowerCase(),on:{click:()=>flipUI(k)}});
+  const top=h("div",{class:"topbar"},
+    UI.chat?null:h("div",{class:"brand"},home()),
+    stream&&LIVE.api?h("div",{class:"tools"},...TOOLBAR.map(([t,name,args])=>h("button",{class:"tog",textContent:t,title:"Right now, no AI",on:{click:()=>tool(name,args)}}))):null,
+    h("div",{class:"toggles"},tog("chat","Chat"),tog("shots","Shots"),tog("details","Details")));
+
+  // Widget 1, the chat. Empty until the animator writes; the model answers here and shows the step it is on.
+  const ok=canChat();
+  const box=h("textarea",{rows:1,value:draft,disabled:!ok,placeholder:ok?"Tell the model what to change":"The chat opens when Blender is live",ariaLabel:"Message to the model"});
+  const send=h("button",{class:"arrow",textContent:"↑",ariaLabel:"Send",disabled:!ok||!draft.trim()});
+  const post=()=>{const t=box.value.trim();if(!t||!ok)return;draft="";box.value="";box.style.height="auto";send.disabled=true;say(t)};
+  box.addEventListener("input",()=>{draft=box.value;send.disabled=!ok||!draft.trim();box.style.height="auto";box.style.height=box.scrollHeight+"px"});
+  box.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();post()}});
+  send.addEventListener("click",post);
+  const side=h("aside",{class:"side",hidden:!UI.chat},h("div",{class:"brand"},home()),h("div",{class:"chat-log"}),h("div",{class:"input"},box,send));
+
+  // Widget 2, the shots: always a thin line to step through them; the pictures only when the widget is open.
+  const bar=h("div",{class:"shotsbar"},
+    h("button",{class:"text",textContent:"←",ariaLabel:"Previous shot",disabled:i===0,on:{click:()=>goTo(i-1)}}),
+    h("span",{class:"label",textContent:"Shot "+(i+1)+" of "+S.shots.length}),
+    h("span",{class:"label tag",textContent:stream?liveTag():live?"Preview · pictures of the built scene · live Blender is not connected yet":""}),
+    h("button",{class:"text",textContent:"→",ariaLabel:"Next shot",disabled:i===S.shots.length-1,on:{click:()=>goTo(i+1)}}));
+  const strip=h("div",{class:"strip",hidden:!UI.shots},...S.shots.map((x,n)=>h("button",{class:"cell"+(n===i?" on":""),title:x.words,ariaLabel:"Shot "+(n+1)+(shotWork(n).step?", generated":""),on:{click:()=>goTo(n)}},
+    x.image?h("img",{src:x.image.src,alt:"",loading:"lazy"}):null,
+    h("u",{},h("i",{style:"width:"+(shotWork(n).step?100:0)+"%"})),h("span",{class:"label",textContent:String(n+1)}))));
+
+  // Widget 3, the scene details: everything written about this shot. Minimised until asked for.
+  const cast=s.entities.map(ent).filter(Boolean).flatMap(e=>[
+    h("button",{class:"who",title:e.name,on:{click:()=>{unfolded=unfolded===e.id?null:e.id;desk()}}},e.image?h("img",{src:e.image.src,alt:""}):h("i"),h("span",{textContent:e.name})),
+    unfolded===e.id?h("div",{class:"look",textContent:e.look}):null]);
+  const lines=(title,items)=>items.length?[h("div",{class:"label",style:"margin-top:18px",textContent:title}),h("div",{class:"facts"},...items.map(t=>h("div",{class:"fact",textContent:t})))]:[];
+  const details=h("aside",{class:"details",hidden:!UI.details},
+    h("h2",{textContent:S.title}),
+    h("div",{class:"label",textContent:"Shot "+(i+1)+" of "+S.shots.length+(s.seconds?" · about "+s.seconds+" seconds":built?" · frames "+built.frames[0]+" to "+built.frames[1]:"")}),
+    h("div",{class:"words",textContent:s.words}),
+    h("div",{class:"ref"},h("img",{src:s.image.src,alt:"Storyboard for shot "+(i+1)}),
+      built?h("div",{class:"cast"},h("span",{class:"label",textContent:"Scene file"}),h("div",{class:"fact plain",textContent:built.file}),
+              h("span",{class:"label",style:"display:block;margin-top:10px",textContent:"Built from"}),h("div",{class:"fact plain",textContent:built.libraries.join(", ")}))
+           :h("div",{class:"cast"},h("span",{class:"label",textContent:"In this shot"}),...cast)),
+    ...(built?[...lines("In the scene",built.parts),...lines("Notes from the build",built.notes),...lines("Checked",built.checks)]
+             :[h("div",{class:"label",style:"margin-top:18px",textContent:"What the picture shows"}),
+               h("div",{class:"prompt"+(more?"":" clamp"),textContent:s.prompt}),
+               h("button",{class:"text",style:"align-self:flex-start;margin-top:4px",textContent:more?"Less":"More",on:{click:()=>{more=!more;desk()}}})]),
+    step>0?h("button",{class:"text",style:"align-self:flex-start;margin-top:18px",textContent:"Start this shot over",on:{click:()=>setStep(0)}}):null);
+
+  const old=document.querySelector(".desk");
+  const scroll=(old&&old.querySelector(".details")||{}).scrollTop||0;
+  if(stream&&old&&old.dataset.stream===streamKey){          // Blender is already on screen: leave it running, redraw only what is around it
+    for(const[sel,el]of[[".side",side],[".topbar",top],[".shotsbar",bar],[".strip",strip],[".details",details]])old.querySelector(sel).replaceWith(el);
+  }else{
+    const el=h("div",{class:"desk"},side,h("div",{class:"work"},top,stage,bar,strip),details);el.dataset.stream=streamKey;
+    app.replaceChildren(el);
+  }
+  details.scrollTop=scroll;
+  showChat();
+  if(stream){openLive(s.short);showTag();showOpening()}     // the live Blender shows the shot the animator is on
+  const on=strip.querySelector(".on");if(on&&UI.shots)on.scrollIntoView({block:"nearest",inline:"nearest"});
+  if(live&&!stream){pics.forEach(p=>{new Image().src=p.src});new Image().src=s.image.src}        // so stepping does not flicker
+  if(live&&!stream&&playing)tick=setTimeout(()=>{at=(at+1)%pics.length;desk()},850);
+}
+
+// Left and right arrows step through the shots, unless you are typing in the chat.
+document.addEventListener("keydown",e=>{
+  if(!document.querySelector(".desk")||/^(TEXTAREA|INPUT)$/.test(document.activeElement.tagName))return;
+  const n=work.at+(e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0);
+  if(n!==work.at&&n>=0&&n<S.shots.length){work.at=n;fresh();save();desk()}
+});
+
+list();
+// Links into the platform (the demo page uses them): #new (the New idea form), #script=<folder>, #storyboard=<folder>, #stage=<0-6>, #desk=navy
+function route(){
+  const [k,v]=decodeURIComponent(location.hash.slice(1)).split("=");const sc=SCRIPTS.find(x=>x.folder===v);
+  if(k==="new")newScript();else if(k==="script"&&sc)scriptPage(sc);else if(k==="storyboard"&&sc)storyboardPage(sc);else if(k==="stage"&&FLOW[+v])showStage(+v);
+  else if(k==="desk"){const st=STORIES.find(x=>x.id===v);if(st){S=st;work=read(st);desk()}}
+}
+route();window.addEventListener("hashchange",route);
+// PlotPointe's own copy wins over this browser's: load every script's saved work, then redraw. A script only this browser knows is sent up.
+if(location.protocol.startsWith("http"))fetch("api/state").then(r=>r.ok?r.json():Promise.reject()).then(d=>{
+  if(!d||!d.scripts)return;remote=true;FILES=d.files||{};
+  SCRIPTS.forEach(sc=>{const got=d.scripts[sc.folder];if(got)store.set(sKey(sc),JSON.stringify(got));else if(store.get(sKey(sc)))push(sc,sRead(sc))});
+  if(view)view()}).catch(()=>{});
+</script>
+</body>
+</html>

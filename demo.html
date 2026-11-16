@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Welcome to PlotPointe</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
+<style>
+:root{--bg:#181a1b;--card:#1f2223;--ink:#e8e6e3;--soft:rgba(232,230,227,.72);--faint:rgba(232,230,227,.46);--line:rgba(232,230,227,.1);--ok:#9fd6a4;--accent:#e8e6e3}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%;background:var(--bg);color:var(--ink);font:400 16px/1.65 Inter,-apple-system,system-ui,sans-serif;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+/* the top: brand, where you are, and the progress bar */
+.top{position:sticky;top:0;z-index:3;background:var(--bg);padding:18px 24px 0;border-bottom:1px solid var(--line)}
+.top .row{max-width:880px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top .brand{font-weight:600;font-size:15px;display:flex;align-items:center;gap:10px}
+.top .brand i{width:22px;height:22px;border-radius:7px;background:var(--ink);display:inline-block}
+.top .where{font-size:13px;color:var(--soft)}
+.bar{max-width:880px;margin:16px auto 0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;padding-bottom:14px}
+.bar button{display:flex;flex-direction:column;gap:8px;text-align:left;padding:0}
+.bar u{display:block;height:4px;border-radius:4px;background:var(--line);overflow:hidden}
+.bar u i{display:block;height:100%;width:0;background:var(--ink);border-radius:4px;transition:width .45s ease}
+.bar .past u i{width:100%;background:rgba(232,230,227,.5)}
+.bar .now u i{width:100%;background:var(--ink);box-shadow:0 0 12px rgba(232,230,227,.5)}
+.bar span{font-size:12px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .past span{color:var(--soft)}.bar .now span{color:var(--ink);font-weight:500}
+/* one page at a time */
+.page{max-width:880px;margin:0 auto;padding:52px 24px 150px;animation:in .4s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.badge{width:44px;height:44px;border-radius:50%;border:1px solid var(--faint);display:grid;place-items:center;font-size:17px;font-weight:500}
+h1{font-size:clamp(38px,6vw,58px);line-height:1.08;font-weight:300;letter-spacing:-.035em;margin-top:14px}
+h2{font-size:clamp(30px,5vw,44px);line-height:1.12;font-weight:300;letter-spacing:-.03em;margin-top:18px}
+.lead{color:var(--soft);margin-top:14px;max-width:620px;font-size:18px;line-height:1.6}
+.state{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:5px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--soft)}
+.state i{width:7px;height:7px;border-radius:50%;background:var(--faint)}
+.state.done i{background:var(--ok)}
+.state b{font-weight:400;color:var(--faint)}
+.card{margin-top:30px;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px}
+.how div{padding:14px 16px;border:1px solid var(--line);border-radius:14px;font-size:14px;line-height:1.5;color:var(--soft)}
+.how b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:400;margin-bottom:4px}
+.open{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-size:14px;color:var(--soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+.open:hover{color:var(--ink);border-color:var(--faint)}
+.box{font-size:16px;line-height:1.75}
+.box.idea{font-size:clamp(20px,3vw,26px);line-height:1.45;font-weight:300;letter-spacing:-.015em}
+.box div+div{margin-top:10px}
+.box s{color:var(--faint)}
+.empty{padding:40px 22px;border:1px dashed var(--line);border-radius:14px;color:var(--faint);text-align:center;font-size:15px}
+.card .empty{border:0;padding:30px 10px}
+.marks{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.marks span{font-size:12px;padding:4px 12px;border:1px solid var(--line);border-radius:999px;color:var(--soft)}
+.marks i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px}
+.fact{margin-top:12px;font-size:13px;color:var(--faint)}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.shots img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px;display:block}
+.cast{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.cast span{display:inline-flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--soft)}
+.cast img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+video{width:100%;max-height:68vh;border-radius:12px;background:#000;display:block}
+.shotpic{width:100%;border-radius:12px;display:block}
+.sound{display:flex;flex-direction:column;gap:12px}
+.sound audio{width:100%;margin-top:6px}
+.cues{max-height:56vh;overflow:auto}
+.cues div{display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:15px}
+.cues div+div{margin-top:8px}
+.cues b{font-weight:400;font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums;padding-top:3px}
+.tree{font-size:14px;line-height:1.95;color:var(--soft)}
+.tree b{color:var(--ink);font-weight:400}
+/* the welcome page: the seven steps as a path */
+.path{margin-top:36px;display:grid;gap:0}
+.path button{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;text-align:left;padding:12px 0;position:relative}
+.path button:not(:last-child)::after{content:"";position:absolute;left:21px;top:56px;bottom:-12px;width:1px;background:var(--line)}
+.path .badge{background:var(--bg);position:relative;z-index:1}
+.path b{display:block;font-size:19px;font-weight:400}
+.path span{display:block;font-size:14px;color:var(--soft)}
+.path em{font-style:normal;font-size:12px;color:var(--faint);white-space:nowrap}
+.path button:hover .badge{border-color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:34px}
+.facts div{padding:16px 18px;border:1px solid var(--line);border-radius:14px}
+.facts b{display:block;font-size:26px;font-weight:300;letter-spacing:-.02em}
+.facts span{font-size:13px;color:var(--soft)}
+/* back and continue */
+.foot{position:fixed;left:0;right:0;bottom:0;z-index:3;background:var(--bg);border-top:1px solid var(--line);padding:14px 24px}
+.foot .row{max-width:880px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.foot button{padding:12px 26px;border-radius:999px;font-size:15px}
+.foot .back{color:var(--soft)}
+.foot .next{background:var(--ink);color:var(--bg);font-weight:500}
+.foot button:disabled{visibility:hidden}
+@media (max-width:760px){.bar span{display:none}.bar{padding-bottom:12px}.facts{grid-template-columns:1fr}.path em{display:none}.page{padding-top:36px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="row"><div class="brand"><i></i>PlotPointe</div><div class="where" id="where"></div></div><nav class="bar" id="bar" aria-label="Progress"></nav></header>
+<main id="app"></main>
+<div class="foot"><div class="row"><button class="back" id="back">← Back</button><button class="next" id="next">Continue</button></div></div>
+<script>document.write('<script src="data/scripts.js?'+Date.now()+'"><\/script>')</script>
+<script>document.write('<script src="data/storyboards.js?'+Date.now()+'"><\/script>')</script>
+<script>
+// The onboarding: a welcome page that explains PlotPointe, then one page per step, with a progress bar on top (Nick, 13 and 14 Nov 2026).
+// Everything on it comes from the platform's own data: the script, its saved record, and the files in its Drive folder.
+// Which story: ?script=<folder> in the address, else the newest story written in the platform. With none (or ?fresh), the demo
+// starts empty and fills in as the story is made (Nick, 14 Nov 2026: "i need a fresh demo screen").
+const ALL=window.SCRIPTS||[],Q=new URLSearchParams(location.search),asked=Q.get("script");
+const picked=Q.has("fresh")?null:ALL.find(x=>x.folder===asked)||ALL.filter(x=>x.made==="platform").sort((a,b)=>a.started<b.started?1:-1)[0]||null;
+const FRESH=!picked,sc=picked||{title:"",folder:"",doc:null,lines:[],made:"platform"};
+const sb=sc&&(window.STORYBOARDS||{})[sc.doc];
+const FLOW=[["Idea",["Waiting for approval","Approved"]],["Script",["Waiting for edit and approval","Approved"]],["Storyboard",["Not started","Written","Approved"]],
+  ["Preview",["Not started","In Blender","Preview ready"]],["SFX",["Not started","Added","Approved"]],["Captions",["Not started","Added","Approved"]],["Publish",["Not published","Published"]]];
+const DIRS=["00 Record","01 Script","02 Storyboard","03 Blend","04 Clips and final video","05 Sound","06 Captions","07 Publish"];
+const h=(t,p={},...k)=>{const e=document.createElement(t);for(const[a,v]of Object.entries(p)){if(a==="on")for(const[n,f]of Object.entries(v))e.addEventListener(n,f);else if(a==="class")e.className=v;else e[a]=v}e.append(...k.filter(x=>x!=null));return e};
+const open=hash=>"animate.html#"+hash;
+const MARKS=[["Cut",null],["My words",null],["Fluff","rgb(255, 191, 102)"],["Flow","rgb(158, 196, 255)"],["Sense","rgb(255, 153, 153)"],["Keep","rgb(153, 230, 153)"]];
+const line=t=>{const d=h("div");d.innerHTML=t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/~~(.+?)~~/g,"<s>$1</s>").replace(/\*\*(.+?)\*\*/g,"<b>$1</b>")
+  .replace(/\[(fluff|flow|sense|keep): (.+?)\]/g,(m,k,x)=>'<span style="background:'+MARKS.find(z=>z[0].toLowerCase()===k)[1]+';color:#181a1b;border-radius:3px;padding:0 2px">'+x+"</span>");return d};
+const app=document.getElementById("app"),bar=document.getElementById("bar"),where=document.getElementById("where");
+
+// The script's saved record (steps, text, changes) and its Drive files come from the page's server when it runs.
+let W=null,FILES={};
+const fresh=()=>{const at=Array(7).fill(0);if(sc&&sc.made!=="platform")at[0]=1;return {at,on:Array(7).fill(null),log:[],sessions:[]}};
+const up=w=>{if(w&&w.at&&w.at.length===4){const m=(a,f)=>{const b=Array(7).fill(f);[1,2,3,6].forEach((k,i)=>b[k]=a&&a[i]!=null?a[i]:f);return b};w.at=m(w.at,0);w.at[0]=1;w.on=m(w.on,null)}return w};
+const rec=()=>W||fresh();
+const done=n=>rec().at[n]>=FLOW[n][1].length-1;
+const stateOf=n=>FRESH?"Not started":FLOW[n][1][rec().at[n]]+(rec().on[n]?" · "+rec().on[n]:"");
+const files=dir=>((FILES[sc&&sc.folder]||{})[dir]||[]);
+const url=(dir,name)=>"api/file?folder="+encodeURIComponent(sc.folder)+"&step="+encodeURIComponent(dir)+"&name="+encodeURIComponent(name);
+const pick=(dirs,re)=>{for(const d of dirs){const f=files(d).find(x=>re.test(x));if(f)return url(d,f)}return null};
+const VIDEO=/\.(mp4|mov|webm)$/i,PIC=/\.(jpe?g|png|webp)$/i,SOUND=/\.(mp3|wav|m4a)$/i,CAPS=/\.(srt|vtt)$/i;
+
+// The pages: the welcome, then one per step.
+let at=0,shown=-1;
+const STEPS=[["Start with an idea","Write the story in a sentence or two."],["Write and edit the script","Edit it right in the platform, with marks and a chat."],
+  ["Draw the storyboard","One picture per shot, every note recorded."],["Preview it in Blender","The shots move, in the real Blender, inside the page."],
+  ["Add the sound","Sound effects and music under the preview."],["Add the captions","The words on screen, timed to the narration."],["Publish","The finished video, ready to upload."]];
+const chip=n=>h("span",{class:"state"+(done(n)?" done":"")},h("i"),h("b",{textContent:"In PlotPointe now: "}),stateOf(n));
+const head=n=>[h("div",{class:"badge",textContent:String(n+1)}),h("span",{class:"label",style:"display:block;margin-top:16px",textContent:"Step "+(n+1)+" of 7 · "+FLOW[n][0]}),
+  h("h2",{textContent:STEPS[n][0]}),h("p",{class:"lead",textContent:STEPS[n][1]}),chip(n)];
+const card=(...k)=>h("div",{class:"card"},...k);
+const how=points=>h("div",{class:"how"},...points.map(([t,x])=>h("div",{},h("b",{textContent:t}),x)));
+const link=(href,text)=>FRESH&&/#(script|storyboard)=/.test(href)?h("a",{class:"open",href:"animate.html#new",textContent:"Start the story in PlotPointe →"}):h("a",{class:"open",href,textContent:text+" →"});
+const none=t=>h("div",{class:"empty",textContent:t});
+const PAGES=[
+  ()=>[h("span",{class:"label",textContent:"Art of War · Welcome"}),
+    h("h1",{textContent:"Welcome to PlotPointe"}),
+    h("p",{class:"lead",textContent:"PlotPointe takes a war story from an idea to a finished video. Seven steps, each one approved by a person, and everything saved to the story's own folder in Drive."}),
+    h("div",{class:"path intro"},...FLOW.map(([name],n)=>h("button",{on:{click:()=>go(n+1)}},h("div",{class:"badge",textContent:String(n+1)}),
+      h("div",{},h("b",{textContent:name}),h("span",{textContent:STEPS[n][1]})),h("em",{textContent:FRESH?"Not started":FLOW[n][1][rec().at[n]]})))),
+    h("div",{class:"facts"},h("div",{},h("b",{textContent:"7 steps"}),h("span",{textContent:"From the idea to the published video"})),
+      h("div",{},h("b",{textContent:"Every edit"}),h("span",{textContent:"Recorded as it happens, with what it was before"})),
+      h("div",{},h("b",{textContent:"1 folder"}),h("span",{textContent:"Per story in Drive, filed by the platform"}))),
+    h("p",{class:"fact",style:"margin-top:30px",textContent:FRESH?"This walkthrough starts empty. It fills in, step by step, as the story is made in PlotPointe.":"This walkthrough follows one real story: "+sc.title+"."})],
+
+  ()=>{const idea=rec().idea!=null?rec().idea:sc.idea||"";
+    return [...head(0),card(idea?h("div",{class:"box idea",textContent:idea}):none(sc.made==="platform"?"No idea written yet.":"This story came from the writers' Google Doc, with its idea already written.")),
+      how([["Write","A title and the idea, in a sentence or two."],["Saved","It gets its own folder in Drive at once."],["Approve","The script step opens."]]),
+      link(open("script="+sc.folder),"Open it in PlotPointe")]},
+
+  ()=>{const w=rec(),lines=(w.text&&w.text.length?w.text:sc.lines)||[];
+    return [...head(1),card(lines.length?h("div",{class:"box"},...lines.map(line)):none("No script written yet."),
+        h("div",{class:"marks"},...MARKS.map(([t,c])=>h("span",{},c?h("i",{style:"background:"+c}):null,t))),
+        w.log.length?h("div",{class:"fact",textContent:w.log.length+(w.log.length===1?" change":" changes")+" recorded in "+w.sessions.length+(w.sessions.length===1?" work session":" work sessions")+", each with what it was before."}):null),
+      how([["Mark","Cut, My words, Fluff, Flow, Sense, Keep."],["Ask","A chat edits on request, following the writer's own lessons."],["Protected","It never changes the writer's own edits without a click."],["Approve","Approval never locks: Reopen to edit."]]),
+      link(open("script="+sc.folder),"Open the script")]},
+
+  ()=>{const pics=sb?sb.shots.map(x=>({src:x.image,alt:"Shot "+x.n+": "+x.words})):files("02 Storyboard").filter(f=>PIC.test(f)).map((f,i)=>({src:url("02 Storyboard",f),alt:"Shot "+(i+1)}));
+    return [...head(2),card(pics.length?h("div",{class:"shots"},...pics.map(x=>h("img",{src:x.src,alt:x.alt,title:x.alt,loading:"lazy"}))):none("No storyboard yet."),
+        pics.length?h("div",{class:"fact",textContent:pics.length+" shots"+(sb?" for about "+sb.seconds+" seconds of narration":"")+", in order."}):null,
+        sb?h("div",{class:"cast"},...sb.cast.filter(c=>c.image).slice(0,10).map(c=>h("span",{},h("img",{src:c.image,alt:""}),c.name))):null),
+      how([["Shots","One picture per shot, in order."],["Notes","A note on any shot is recorded and saved to Drive."],["Approve","The preview step opens."]]),
+      link(open((sb?"storyboard=":"script=")+sc.folder),"Open the storyboard")]},
+
+  ()=>{const v=pick(["04 Clips and final video","03 Blend"],VIDEO);
+    return [...head(3),card(v?h("video",{src:v,controls:true,playsInline:true,preload:"metadata"}):h("div",{},h("img",{class:"shotpic",src:"review/15_blender_fills_the_page_chat_off.jpg",alt:"The real Blender running inside the page"}),
+        h("div",{class:"fact",textContent:"The shot desk with the navy demo scenes. This story's preview is not made yet."}))),
+      how([["Live","The real Blender, on a rented graphics machine, shown inside the page."],["Buttons","Face, Full shot, Bones, Play, Undo answer in under a second."],["Chat","Stop and correct a wrong move while it happens."]]),
+      link(open("desk=navy"),"Open the shot desk")]},
+
+  ()=>{const got=["05 Sound"].flatMap(d=>files(d).filter(f=>SOUND.test(f)).map(f=>({f,src:url(d,f)})));
+    const v=pick(["05 Sound"],VIDEO);                // a video with the sound mixed in, when there is one
+    return [...head(4),card(v||got.length?h("div",{class:"sound"},v?h("video",{src:v,controls:true,playsInline:true,preload:"metadata"}):null,...got.map(x=>h("div",{},h("span",{class:"label",textContent:x.f}),h("audio",{src:x.src,controls:true,preload:"metadata"})))):none("No sound yet.")),
+      how([["Files","The sound lives in 05 Sound in the story's Drive folder and plays here."],["Approve","The captions step opens."]]),
+      link(open("script="+sc.folder),"Open it in PlotPointe")]},
+
+  ()=>{const box=card(none("No captions yet."));
+    const c=pick(["06 Captions"],CAPS);
+    if(c)fetch(c).then(r=>r.ok?r.text():"").then(t=>{const cues=t.replace(/\r/g,"").split(/\n\n+/).map(b=>b.split("\n")).map(b=>{const i=b.findIndex(x=>x.includes("-->"));return i<0?null:{at:b[i].split("-->")[0].trim().replace(/,\d+$/,"").replace(/\.\d+$/,""),text:b.slice(i+1).join(" ")}}).filter(Boolean);
+      if(cues.length)box.replaceChildren(h("div",{class:"box cues"},...cues.map(q=>h("div",{},h("b",{textContent:q.at}),h("span",{textContent:q.text})))))}).catch(()=>{});
+    return [...head(5),box,how([["Files","The captions file lives in 06 Captions in the story's Drive folder."],["Approve","The publish step opens."]]),
+      link(open("script="+sc.folder),"Open it in PlotPointe")]},
+
+  ()=>{const v=pick(["07 Publish"],VIDEO);
+    return [...head(6),card(v?h("video",{src:v,controls:true,playsInline:true,preload:"metadata"}):none("The finished video is not made yet.")),
+      how([["Upload","Uploading is done by hand, then the step is marked Published."],["Filed","Everything from all seven steps is in one folder."]]),
+      card(h("div",{class:"tree"},h("b",{textContent:"Art Of War Productions / "+(sc.folder||"(the story's title)")}),...DIRS.map(d=>h("div",{textContent:"  "+d+(files(d).length?" · "+files(d).length+(files(d).length===1?" file":" files"):"")})))),
+      link(open("stage=0"),"See every story")]}];
+
+function go(n){
+  at=Math.max(0,Math.min(PAGES.length-1,n));
+  if(location.hash!=="#"+(at+1))history.replaceState(null,"","#"+(at+1));
+  where.textContent=at===0?"Welcome":"Step "+at+" of 7";
+  bar.replaceChildren(...FLOW.map(([name],n)=>h("button",{class:n+1<at?"past":n+1===at?"now":"",ariaCurrent:n+1===at?"step":null,title:name,on:{click:()=>go(n+1)}},h("u",{},h("i")),h("span",{textContent:name}))));
+  app.replaceChildren(h("div",{class:"page",style:at===shown?"animation:none":""},...PAGES[at]()));shown=at;   // the same page redrawn with fresh data does not fade in again
+  document.getElementById("back").disabled=at===0;
+  const nx=document.getElementById("next");nx.disabled=at===PAGES.length-1;nx.textContent=at===0?"Get started":"Continue";
+  window.scrollTo(0,0);
+}
+document.getElementById("back").addEventListener("click",()=>go(at-1));
+document.getElementById("next").addEventListener("click",()=>go(at+1));
+document.addEventListener("keydown",e=>{if(/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName))return;if(e.key==="ArrowRight")go(at+1);if(e.key==="ArrowLeft")go(at-1)});
+go((parseInt(location.hash.slice(1),10)||1)-1);
+if(location.protocol.startsWith("http"))fetch("api/state").then(r=>r.ok?r.json():Promise.reject()).then(d=>{
+  if(!d||FRESH)return;W=d.scripts&&d.scripts[sc.folder]?up(d.scripts[sc.folder]):null;FILES=d.files||{};go(at)}).catch(()=>{});
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<!-- The Blender screen with nothing around it: no toolbar, scaled to fit, reconnects by itself.
+     pod_start.sh copies this beside noVNC on the cloud machine (as pp.html) and the Animate page shows it. -->
+<html><head><meta charset="utf-8"><title>Blender</title>
+<style>html,body{height:100%;margin:0;background:#181a1b;overflow:hidden}#screen{width:100%;height:100%}</style></head>
+<body><div id="screen"></div>
+<script type="module">
+import RFB from "./core/rfb.js";
+const url = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/websockify";
+function connect() {
+  const rfb = new RFB(document.getElementById("screen"), url);
+  rfb.resizeSession = true;     // the machine's screen takes the size of this window, so Blender fills it at normal size
+  rfb.scaleViewport = true;     // until the machine has resized, and if it cannot, the picture is scaled to fit
+  rfb.addEventListener("disconnect", () => setTimeout(connect, 1500));
+}
+connect();
+</script></body></html>
