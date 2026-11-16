@@ -7,3 +7,5 @@ data/img/*.png
 data/navy/*.png
 saves/
 data/work/
+__pycache__/
+*.pyc
